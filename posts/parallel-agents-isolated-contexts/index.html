@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parallel Agents, Isolated Contexts -- AP.HAUS</title>
+  <meta name="description" content="Agent workflows are sequential bottlenecks. We built a multiplexer that runs them in parallel with full context isolation.">
+  <meta property="og:title" content="Parallel Agents, Isolated Contexts -- AP.HAUS">
+  <meta property="og:description" content="Agent workflows are sequential bottlenecks. We built a multiplexer that runs them in parallel with full context isolation.">
+  <meta property="og:image" content="https://ap.haus/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='24' width='4' height='4' fill='%233d3530'/><rect x='8' y='20' width='4' height='4' fill='%233d3530'/><rect x='12' y='16' width='4' height='4' fill='%233d3530'/><rect x='12' y='12' width='4' height='4' fill='%233d3530'/><rect x='16' y='8' width='4' height='4' fill='%233d3530' opacity='.6'/><rect x='24' y='24' width='4' height='4' fill='%233d3530'/><rect x='20' y='20' width='4' height='4' fill='%233d3530'/><rect x='16' y='16' width='4' height='4' fill='%233d3530'/><rect x='16' y='12' width='4' height='4' fill='%233d3530'/><rect x='8' y='20' width='16' height='4' fill='%233d3530' opacity='.15'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <canvas id="field"></canvas>
+  <div class="cursor-dot" id="cursor"></div>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">AP.HAUS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="/research/">RESEARCH</a>
+      <a href="/products/">PRODUCTS</a>
+      <a href="/posts/" class="active">WRITING</a>
+      <a href="/about/">ABOUT</a>
+    </div>
+  </nav>
+
+  <article class="post-article">
+    <div class="container">
+      <div class="reveal">
+        <p class="post-meta">MARCH 2026 &middot; RESEARCH</p>
+        <h1 class="post-title">PARALLEL AGENTS, ISOLATED CONTEXTS</h1>
+        <p class="post-subtitle">One agent, one context window, one task at a time. We broke that assumption and found that most agent work was never actually sequential.</p>
+      </div>
+
+      <div class="post-body reveal">
+
+        <h2>THE SEQUENTIAL BOTTLENECK</h2>
+
+        <p>Here's how most people use coding agents: give it a task, wait, give it the next task. Sequential by default. Not because the tasks depend on each other, but because the tooling assumes one thread.</p>
+
+        <p>We started noticing the pattern in our own work. Refactoring three modules. Running tests while fixing a bug elsewhere. Researching an API while scaffolding the integration. Independent tasks, sitting in a queue, waiting their turn for no reason.</p>
+
+        <p>"Just open more terminals" is the naive fix, and it's what we did at first. It creates a different problem. Each session is blind to the others. No shared state, no aggregate cost tracking, no way to see what six agents are doing at a glance. You become the orchestrator, mentally tracking which tab is doing what, copy-pasting context between sessions.</p>
+
+        <p>So we built the orchestrator.</p>
+
+        <h2>ARCHITECTURE</h2>
+
+        <p>Flock is a native macOS application built in Swift and AppKit. It manages multiple Claude Code CLI instances as isolated subprocesses, each with its own PTY, environment, and context window.</p>
+
+        <h3>PROCESS ISOLATION</h3>
+
+        <p>Each agent session spawns a separate <code>claude</code> process with <code>--output-format stream-json --verbose</code>. The process gets its own:</p>
+
+        <ul>
+          <li>Pseudo-terminal (PTY) via SwiftTerm</li>
+          <li>Shell environment with isolated ZDOTDIR (prevents cross-contamination)</li>
+          <li>Bidirectional I/O pipes for input injection and output parsing</li>
+          <li>Independent working directory</li>
+        </ul>
+
+        <p>Process isolation is critical. If two agents are editing files in the same repo, their tool calls must not interfere with each other's context windows. Each process maintains its own conversation state. The multiplexer orchestrates, but never merges contexts.</p>
+
+        <h3>STREAM PARSING</h3>
+
+        <p>The <code>stream-json</code> output format gives us structured events for every action the agent takes: thinking blocks, tool calls, tool results, text responses. We parse these in real-time on a dedicated queue.</p>
+
+        <pre><code>stdout → readabilityHandler → parser queue → event dispatch
+  ↓
+  AgentTaskAction {
+    type: think | read | edit | write | bash | search | agent | web | message
+    timestamp: Date
+    content: String
+    metadata: [String: Any]
+  }</code></pre>
+
+        <p>This gives us a structured action timeline for every running agent. We know what each agent is doing at any moment -- not from terminal output scraping, but from the actual event stream.</p>
+
+        <h3>STATE DETECTION</h3>
+
+        <p>Terminal output is noisy. An agent that's "thinking" looks identical to an agent that's "waiting" if you're just watching the terminal. We built a state detector that classifies agent activity in real-time:</p>
+
+        <ul>
+          <li><strong>Active:</strong> byte rate > 150 bytes/sec (agent is producing output)</li>
+          <li><strong>Thinking:</strong> Claude is reasoning (detected from stream events)</li>
+          <li><strong>Running:</strong> a tool call is executing (Bash, Read, etc.)</li>
+          <li><strong>Waiting:</strong> idle for > 2.5 seconds</li>
+          <li><strong>Error:</strong> process exited with non-zero status</li>
+        </ul>
+
+        <p>Each pane's tab shows its current state with a visual indicator. Across 6 running agents, you can see at a glance which are active, which are blocked, which are done.</p>
+
+        <h2>AGENT MODE</h2>
+
+        <p>Beyond raw terminal multiplexing, Flock has a dedicated agent mode -- a kanban-style interface for orchestrating multi-step workflows.</p>
+
+        <p>The model is simple. You create tasks. Tasks have a state machine:</p>
+
+        <pre><code>backlog → inProgress → done | failed</code></pre>
+
+        <p>A scheduler manages capacity. You configure <code>maxParallelAgents</code> (default: 3). When a running task completes, the scheduler pulls the next task from the backlog. Each task gets its own Claude process, its own action timeline, its own cost accumulator.</p>
+
+        <h3>RESUMPTION</h3>
+
+        <p>Claude Code sessions have a <code>sessionId</code>. When a task completes but needs follow-up, Flock resumes it with <code>claude --resume &lt;sessionId&gt; -p &lt;message&gt;</code>. The resumed process inherits the full conversation history. Cost accumulates across resumption rounds:</p>
+
+        <pre><code>task.costUsd += resumedSession.cost</code></pre>
+
+        <p>This means a single task can span multiple Claude sessions while maintaining continuous cost tracking and a unified action timeline.</p>
+
+        <h3>OBSERVABILITY OVER CONTROL</h3>
+
+        <p>The interface isn't a terminal emulator. The interesting design decision was treating agent output as a structured event stream rather than text to scroll through. You see what the agent read, what it edited, what it was thinking -- as discrete actions with metadata, not raw stdout. This matters when you're watching three agents simultaneously. You need to pattern-match on behavior, not read every line.</p>
+
+        <h2>SHARED MEMORY</h2>
+
+        <p>Parallel agents with isolated contexts create a coordination problem: how does agent B know what agent A discovered?</p>
+
+        <p>Flock's memory system bridges this gap. A <code>MemoryStore</code> maintains a shared pool of entries (max 200, auto-trimmed, pinned entries preserved). When memory is enabled, Flock generates a <code>.flock-context.md</code> file in the working directory that all agent sessions read as persistent context.</p>
+
+        <p>Memory entries are categorized:</p>
+
+        <ul>
+          <li><strong>project</strong> -- facts about the codebase or current work</li>
+          <li><strong>preference</strong> -- how the user wants things done</li>
+          <li><strong>correction</strong> -- mistakes to avoid</li>
+          <li><strong>taskSummary</strong> -- auto-generated when tasks complete</li>
+        </ul>
+
+        <p>When a task completes, its summary is automatically written to the memory store. Subsequent tasks see that summary in their context file. This creates an implicit coordination layer -- agent B doesn't talk to agent A, but it reads what agent A concluded.</p>
+
+        <h2>TOKEN ECONOMICS OF PARALLELISM</h2>
+
+        <p>The obvious argument for parallelism is wall-clock time. Run five tasks at once, finish in the time of the slowest one. But there's a less obvious argument that matters more: context isolation saves tokens.</p>
+
+        <p>Sequential workflows accumulate context. Each new task in the same conversation inherits everything from previous tasks. By task 5, you're paying for 4 tasks worth of context you don't need. Parallel agents start clean. Each window contains only what its task requires.</p>
+
+        <pre><code>sequential (5 tasks, same context):
+  task 1:  ~40K tokens
+  task 2:  ~80K tokens (carries task 1)
+  task 3: ~120K tokens (carries 1+2)
+  task 4: ~160K tokens (carries 1+2+3)
+  task 5: ~200K tokens (carries 1+2+3+4)
+  total:   600K tokens
+
+parallel (5 tasks, isolated):
+  task 1:  ~40K tokens
+  task 2:  ~40K tokens
+  task 3:  ~40K tokens
+  task 4:  ~40K tokens
+  task 5:  ~40K tokens
+  total:   200K tokens</code></pre>
+
+        <p>3x token efficiency, plus the tasks complete in wall-clock time of the slowest one instead of the sum of all five. The shared memory file adds maybe 2K tokens per context. The savings compound with task count.</p>
+
+        <h2>USAGE TRACKING</h2>
+
+        <p>Running multiple agents simultaneously means cost can spike fast. Flock tracks everything in real-time:</p>
+
+        <ul>
+          <li><strong>Per-session:</strong> input tokens, output tokens, cache read/creation tokens</li>
+          <li><strong>Per-model pricing:</strong> Opus, Sonnet, Haiku rates applied automatically</li>
+          <li><strong>Plan limits:</strong> OAuth API polling for 5-hour and 7-day utilization</li>
+          <li><strong>Aggregate daily:</strong> total cost, session count, token breakdown</li>
+        </ul>
+
+        <p>The status bar shows utilization percentage and reset countdown. You know exactly how much runway you have before hitting plan limits -- critical when you're running 3 agents simultaneously burning through your allocation.</p>
+
+        <h2>WHAT WE LEARNED</h2>
+
+        <p>After a few months of daily use, the takeaway isn't about the architecture. It's that most agent work is embarrassingly parallel and we just didn't know it. The tooling assumed sequential. We assumed sequential. Once parallel is as easy as opening a new pane, you realize the queue was artificial.</p>
+
+        <p>The other thing we didn't expect: isolation makes agents better. Agents that can't see each other's context make fewer compounding errors. No confusion from tool output belonging to a different task. No stale assumptions from three tasks ago bleeding into the current one. The shared memory file gives just enough coordination. Everything else is noise you're better off without.</p>
+
+        <p>Flock is open source at <a href="https://github.com/Divagation/flock">github.com/Divagation/flock</a>.</p>
+
+      </div>
+
+      <div class="post-nav reveal">
+        <a href="/posts/" style="font-family: var(--pixel); font-size: 10px; letter-spacing: 1px; color: var(--muted);">&larr; ALL POSTS</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <span class="footer-brand">AP.HAUS 2026</span>
+    <div class="footer-links">
+      <a href="https://github.com/Divagation" target="_blank" rel="noopener">GITHUB</a>
+      <a href="https://baa.haus" target="_blank" rel="noopener">BAA.HAUS</a>
+      <a href="#">TOP</a>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+</body>
+</html>

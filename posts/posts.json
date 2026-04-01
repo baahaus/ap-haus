@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "title": "Compressing the Tool Layer",
+    "slug": "compressing-the-tool-layer",
+    "description": "Most compression research targets prompts. In agent workflows, tool output is where the tokens actually burn.",
+    "date": "2026-03-31",
+    "tags": ["compression", "wren", "tokens", "agents"]
+  },
+  {
+    "title": "Parallel Agents, Isolated Contexts",
+    "slug": "parallel-agents-isolated-contexts",
+    "description": "Agent workflows are sequential bottlenecks. We built a multiplexer that runs them in parallel with full context isolation.",
+    "date": "2026-03-28",
+    "tags": ["agents", "flock", "orchestration", "multiplexing"]
+  },
+  {
+    "title": "Memory Without Vectors",
+    "slug": "memory-without-vectors",
+    "description": "Flat files, structured frontmatter, and grep. A memory architecture for AI agents that doesn't need a vector database.",
+    "date": "2026-03-25",
+    "tags": ["memory", "architecture", "agents", "persistence"]
+  }
+]

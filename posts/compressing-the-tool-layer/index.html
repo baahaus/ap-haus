@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compressing the Tool Layer -- AP.HAUS</title>
+  <meta name="description" content="Most compression research targets prompts. In agent workflows, tool output is where the tokens actually go.">
+  <meta property="og:title" content="Compressing the Tool Layer -- AP.HAUS">
+  <meta property="og:description" content="Most compression research targets prompts. In agent workflows, tool output is where the tokens actually go.">
+  <meta property="og:image" content="https://ap.haus/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='24' width='4' height='4' fill='%233d3530'/><rect x='8' y='20' width='4' height='4' fill='%233d3530'/><rect x='12' y='16' width='4' height='4' fill='%233d3530'/><rect x='12' y='12' width='4' height='4' fill='%233d3530'/><rect x='16' y='8' width='4' height='4' fill='%233d3530' opacity='.6'/><rect x='24' y='24' width='4' height='4' fill='%233d3530'/><rect x='20' y='20' width='4' height='4' fill='%233d3530'/><rect x='16' y='16' width='4' height='4' fill='%233d3530'/><rect x='16' y='12' width='4' height='4' fill='%233d3530'/><rect x='8' y='20' width='16' height='4' fill='%233d3530' opacity='.15'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <canvas id="field"></canvas>
+  <div class="cursor-dot" id="cursor"></div>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">AP.HAUS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="/research/">RESEARCH</a>
+      <a href="/products/">PRODUCTS</a>
+      <a href="/posts/" class="active">WRITING</a>
+      <a href="/about/">ABOUT</a>
+    </div>
+  </nav>
+
+  <article class="post-article">
+    <div class="container">
+      <div class="reveal">
+        <p class="post-meta">MARCH 2026 &middot; RESEARCH</p>
+        <h1 class="post-title">COMPRESSING THE TOOL LAYER</h1>
+        <p class="post-subtitle">Everyone's compressing prompts. Nobody's compressing the thing that actually fills the context window. We built a model for that.</p>
+      </div>
+
+      <div class="post-body reveal">
+
+        <h2>THE PROBLEM ISN'T THE PROMPT</h2>
+
+        <p>LLMLingua, LongLLMLingua, training-free evaluator heads -- there's real work happening in prompt compression. All of it targets the same surface: the user's input.</p>
+
+        <p>That's not where the tokens go.</p>
+
+        <p>We've been running Claude Code as our primary development environment for months. Dozens of tool calls per task. Each <code>Read</code> returns up to 2,000 lines of source code. Each <code>Grep</code> dumps file matches with surrounding context. Each <code>Bash</code> spits back build output, test results, full stack traces. One agent task can push 200K tokens of tool output into the context window before the model even starts thinking about a solution.</p>
+
+        <p>We instrumented our sessions across a month. The breakdown:</p>
+
+        <table>
+          <tr><th>SOURCE</th><th>% OF TOTAL TOKENS</th></tr>
+          <tr><td>Tool output (Read, Grep, Bash, etc.)</td><td>62-78%</td></tr>
+          <tr><td>Model responses</td><td>14-22%</td></tr>
+          <tr><td>System prompt + user messages</td><td>8-16%</td></tr>
+        </table>
+
+        <p>The prompt is a rounding error. Tool output is the context window.</p>
+
+        <h2>WHAT TOOL OUTPUT ACTUALLY LOOKS LIKE</h2>
+
+        <p>Tool output isn't natural language. That's what makes it both harder and easier to compress than prompts.</p>
+
+        <p>Harder because the structure matters. A function signature, an import path, an error line number -- lose any of these and the model makes wrong edits. Easier because tool output is dense with predictable redundancy: whitespace patterns, boilerplate imports, repeated variable names, framework scaffolding, comment blocks the model doesn't need to read.</p>
+
+        <p>We categorized the output types we see in practice:</p>
+
+        <ul>
+          <li><strong>Source code</strong> (Read tool) -- heavily structured, high redundancy in formatting and imports, but semantically dense in signatures and logic</li>
+          <li><strong>Search results</strong> (Grep tool) -- repeated file paths, line number prefixes, context lines that duplicate nearby reads</li>
+          <li><strong>Build/test output</strong> (Bash tool) -- verbose by default, 90% noise in passing tests, signal concentrated in failures</li>
+          <li><strong>Directory listings</strong> (Glob, ls) -- pure structure, highly compressible</li>
+          <li><strong>Git output</strong> (diff, log, status) -- mixed structure and content, diff headers are pure overhead</li>
+        </ul>
+
+        <p>Each type has different compression characteristics. A grep result compresses differently than a stack trace. We needed a model that could learn these patterns, not a rule-based system that would break on edge cases.</p>
+
+        <h2>WREN: THE ARCHITECTURE</h2>
+
+        <p>Wren is a LoRA fine-tuned 1.5B parameter model trained specifically for tool output compression. It runs locally on Apple Silicon via MLX -- no API calls, no latency penalty beyond local inference.</p>
+
+        <p>Three constraints shaped everything:</p>
+
+        <p><strong>Local only.</strong> Sending tool output to a remote API for compression means spending tokens to save tokens. MLX on Apple Silicon gives sub-second inference. Zero API cost.</p>
+
+        <p><strong>Semantic preservation over ratio.</strong> A 90% compression that drops a function signature is worse than 50% that keeps it. We'd rather under-compress than lose a single load-bearing token.</p>
+
+        <p><strong>Invisible integration.</strong> Wren sits in the pipeline as an MCP server. Claude calls tools normally. Output passes through Wren before hitting the context window. You don't change how you work.</p>
+
+        <p>Training data came from our own sessions -- hundreds of real tool outputs paired with manually verified compressed versions. Every compressed form had to preserve what the model would need to produce correct edits, correct commands, correct reasoning. We threw out pairs where the compression dropped anything semantic, even if the ratio was impressive.</p>
+
+        <h3>COMPRESSION THRESHOLDS</h3>
+
+        <p>Not everything should be compressed. Short outputs have low redundancy and the inference cost isn't justified. We enforce two gates:</p>
+
+        <pre><code>minimum input:  300 characters
+minimum savings: 20% reduction</code></pre>
+
+        <p>If the input is too short or the compression doesn't clear 20%, Wren returns the original unchanged. In practice, this means small tool outputs (single-line grep matches, short git status) pass through untouched, while large code reads and verbose build logs get significant compression.</p>
+
+        <h2>RESULTS IN PRODUCTION</h2>
+
+        <p>Across 30 days of daily use in real development workflows (not benchmarks, not synthetic inputs), Wren achieves:</p>
+
+        <table>
+          <tr><th>OUTPUT TYPE</th><th>COMPRESSION RATIO</th><th>SEMANTIC RETENTION</th></tr>
+          <tr><td>Source code (Read)</td><td>55-65%</td><td>Full -- signatures, logic, imports preserved</td></tr>
+          <tr><td>Search results (Grep)</td><td>60-75%</td><td>Full -- matched lines, paths, line numbers preserved</td></tr>
+          <tr><td>Build output (Bash)</td><td>70-85%</td><td>Full -- errors and warnings preserved, passing test noise removed</td></tr>
+          <tr><td>Directory listings</td><td>65-80%</td><td>Full -- structure and paths preserved</td></tr>
+          <tr><td>Git diff/log</td><td>50-65%</td><td>Full -- hunks and messages preserved, headers compressed</td></tr>
+        </table>
+
+        <p>The aggregate across all output types lands at 60-80% token reduction with no observed degradation in model behavior. Claude produces the same edits, the same commands, the same reasoning -- just with a smaller context window footprint.</p>
+
+        <h2>TOKEN ECONOMICS</h2>
+
+        <p>Wren runs locally. Inference cost is your laptop's power draw. The savings are pure:</p>
+
+        <pre><code>typical agent task:     ~120,000 tokens tool output
+after wren:             ~35,000 tokens tool output
+savings per task:       ~85,000 tokens
+at opus pricing:        ~$1.28 saved per task
+across 20 tasks/day:    ~$25.60/day, ~$768/month</code></pre>
+
+        <p>Output tokens are priced 3-8x higher than input tokens on most APIs. Since tool output gets cached and re-read by the model across multiple turns, the actual savings compound -- compressed output means smaller cache reads on every subsequent turn.</p>
+
+        <h2>WHY THIS ISN'T PROMPT COMPRESSION</h2>
+
+        <p>Different problem than prompt compression. Worth being explicit about why.</p>
+
+        <p>Prompts are natural language. The redundancy is linguistic -- filler words, syntactic scaffolding, implied context. LLMLingua drops low-information tokens and meaning survives because natural language is fault-tolerant. You can remove "the" and "is" and nothing breaks.</p>
+
+        <p>Tool output is structured, machine-generated text. The redundancy is structural -- repeated patterns, formatting overhead, boilerplate. But the high-signal tokens are load-bearing in a way natural language rarely is. A variable name, an error code, a file path. Drop the wrong one from a grep result and the model edits the wrong file.</p>
+
+        <p>The model needs to understand code structure, not just token frequency. <code>import React from 'react'</code> appearing in 15 files is compressible. <code>import { useCustomHook } from './hooks'</code> is probably unique and critical. That distinction requires training on real tool outputs, not Wikipedia articles.</p>
+
+        <h2>INTEGRATION</h2>
+
+        <p>Wren runs as an MCP server. The setup is one line in your Claude config:</p>
+
+        <pre><code>{
+  "mcpServers": {
+    "wren": {
+      "command": "python3",
+      "args": ["-m", "wren.mcp"]
+    }
+  }
+}</code></pre>
+
+        <p>It also ships built into <a href="/products/">Flock</a>, our agent multiplexer, where it automatically compresses paste input into Claude sessions when the text exceeds the 300-character threshold.</p>
+
+        <p>The code is open source at <a href="https://github.com/Divagation/wren">github.com/Divagation/wren</a>.</p>
+
+        <h2>WHAT'S NEXT</h2>
+
+        <p>Compression after the fact is step one. Step two is agents that are compression-aware from the start -- structuring tool calls to minimize redundancy before it exists. Why read an entire file when 40 lines around the target function carry all the signal? The compression model already knows this. The agent should too.</p>
+
+        <p>We're also building a benchmark suite for tool output compression specifically. The field lacks a standard evaluation that measures semantic retention across output types -- code, grep, build logs, git. Aggregate compression ratios don't tell you if the model can still make correct edits. We'll publish the suite alongside the next Wren release.</p>
+
+      </div>
+
+      <div class="post-nav reveal">
+        <a href="/posts/" style="font-family: var(--pixel); font-size: 10px; letter-spacing: 1px; color: var(--muted);">&larr; ALL POSTS</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <span class="footer-brand">AP.HAUS 2026</span>
+    <div class="footer-links">
+      <a href="https://github.com/Divagation" target="_blank" rel="noopener">GITHUB</a>
+      <a href="https://baa.haus" target="_blank" rel="noopener">BAA.HAUS</a>
+      <a href="#">TOP</a>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+</body>
+</html>

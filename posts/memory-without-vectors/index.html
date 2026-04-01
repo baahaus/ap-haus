@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory Without Vectors -- AP.HAUS</title>
+  <meta name="description" content="Flat files, structured frontmatter, and grep. A memory architecture for AI agents that doesn't need a vector database.">
+  <meta property="og:title" content="Memory Without Vectors -- AP.HAUS">
+  <meta property="og:description" content="Flat files, structured frontmatter, and grep. A memory architecture for AI agents that doesn't need a vector database.">
+  <meta property="og:image" content="https://ap.haus/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='4' y='24' width='4' height='4' fill='%233d3530'/><rect x='8' y='20' width='4' height='4' fill='%233d3530'/><rect x='12' y='16' width='4' height='4' fill='%233d3530'/><rect x='12' y='12' width='4' height='4' fill='%233d3530'/><rect x='16' y='8' width='4' height='4' fill='%233d3530' opacity='.6'/><rect x='24' y='24' width='4' height='4' fill='%233d3530'/><rect x='20' y='20' width='4' height='4' fill='%233d3530'/><rect x='16' y='16' width='4' height='4' fill='%233d3530'/><rect x='16' y='12' width='4' height='4' fill='%233d3530'/><rect x='8' y='20' width='16' height='4' fill='%233d3530' opacity='.15'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <canvas id="field"></canvas>
+  <div class="cursor-dot" id="cursor"></div>
+
+  <nav class="nav">
+    <a href="/" class="nav-brand">AP.HAUS</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="/research/">RESEARCH</a>
+      <a href="/products/">PRODUCTS</a>
+      <a href="/posts/" class="active">WRITING</a>
+      <a href="/about/">ABOUT</a>
+    </div>
+  </nav>
+
+  <article class="post-article">
+    <div class="container">
+      <div class="reveal">
+        <p class="post-meta">MARCH 2026 &middot; RESEARCH</p>
+        <h1 class="post-title">MEMORY WITHOUT VECTORS</h1>
+        <p class="post-subtitle">Everyone reaches for vector databases. We've been running flat markdown files with frontmatter and grep for months. For agent memory at this scale, it's not a compromise. It's the better architecture.</p>
+      </div>
+
+      <div class="post-body reveal">
+
+        <h2>THE VECTOR DEFAULT</h2>
+
+        <p>The answer to "how do I give my agent memory" is always the same: vectors. Embed into Pinecone or Chroma or Weaviate, retrieve with cosine similarity. RAG. Every tutorial, every framework, every pitch deck.</p>
+
+        <p>We built that. It works for searching large corpora. For the kind of memory a coding agent actually needs -- a few hundred facts about the user, the project, and past mistakes -- it's overengineered in ways that actively hurt.</p>
+
+        <p>What we ran into:</p>
+
+        <ul>
+          <li><strong>Embedding drift.</strong> The same concept embedded at different times produces different vectors. Memory retrieval quality degrades as the store grows and embedding distributions shift.</li>
+          <li><strong>Context collapse.</strong> Vector similarity retrieves content that's semantically close but contextually wrong. "The user prefers dark themes" and "never use dark themes" are semantically similar and functionally opposite.</li>
+          <li><strong>Opacity.</strong> You can't grep a vector database. You can't open it in a text editor. You can't git diff it. Debugging why the agent remembered the wrong thing requires tooling that doesn't exist yet.</li>
+          <li><strong>Infrastructure overhead.</strong> A vector database is a running service. It needs embedding model calls on write, similarity search on read, and periodic maintenance. For a single-user coding agent, this is a server to remember 200 facts.</li>
+        </ul>
+
+        <p>We scrapped it and started over with the simplest thing that could work.</p>
+
+        <h2>THE ACTUAL PROBLEM</h2>
+
+        <p>Agent memory for coding workflows has specific characteristics that differ from general RAG:</p>
+
+        <ul>
+          <li><strong>Small corpus.</strong> A power user accumulates maybe 100-300 memories over months. Not millions of documents. Not even thousands.</li>
+          <li><strong>Categorical, not continuous.</strong> Memories fall into distinct types: facts about the user, behavioral feedback, project state, external references. These categories matter more than semantic similarity.</li>
+          <li><strong>Retrieval by relevance to task, not similarity to query.</strong> When the agent starts a coding session, it doesn't search for "memories similar to this prompt." It loads context relevant to the current project, the user's preferences, recent decisions.</li>
+          <li><strong>Human-readable and editable.</strong> The user should be able to read their agent's memories, correct wrong ones, delete outdated ones. Memory is a shared resource between human and agent.</li>
+        </ul>
+
+        <p>Two hundred entries. Categorical structure. Human editability. Task-based retrieval. This is a filesystem problem. We were treating it like a search problem.</p>
+
+        <h2>THE ARCHITECTURE</h2>
+
+        <p>Our memory system has three components: individual memory files, an index, and a set of conventions for when to read and write.</p>
+
+        <h3>MEMORY FILES</h3>
+
+        <p>Each memory is a markdown file with YAML frontmatter:</p>
+
+        <pre><code>---
+name: trading approach
+description: Alt swings preferred over major coin grinding, spot-only is platform constraint
+type: feedback
+---
+
+Alt swings > major coin grinding. Spot-only is an OKX constraint,
+not a preference.
+
+**Why:** User corrected assumption that they preferred conservative
+major-pair trades. They want higher-volatility alt positions.
+
+**How to apply:** Default to alt pairs when suggesting trades.
+Only recommend BTC/ETH for specific macro setups.</code></pre>
+
+        <p>The frontmatter fields serve as structured metadata: <code>name</code> for identification, <code>description</code> as a one-line summary used for relevance decisions, <code>type</code> for categorical filtering.</p>
+
+        <p>Four memory types, each with distinct semantics:</p>
+
+        <ul>
+          <li><strong>user</strong> -- who the person is, their role, expertise, preferences. Shapes how the agent communicates and what it assumes.</li>
+          <li><strong>feedback</strong> -- corrections and confirmations. What to stop doing, what to keep doing, and why. These are the highest-priority memories because they represent explicit behavioral guidance.</li>
+          <li><strong>project</strong> -- active work context. What's being built, why, constraints, deadlines. These decay fastest and need regular updates.</li>
+          <li><strong>reference</strong> -- pointers to external resources. Where to find things outside the local filesystem.</li>
+        </ul>
+
+        <h3>THE INDEX</h3>
+
+        <p>A single <code>MEMORY.md</code> file serves as the index. It's loaded into the agent's context at the start of every conversation. Each entry is one line:</p>
+
+        <pre><code># Memory Index
+
+## User
+- [user_profile.md](user_profile.md) -- Full personal profile: role, interests, location
+
+## Feedback
+- [feedback_no_dark_themes.md](feedback_no_dark_themes.md) -- NEVER use dark themes
+- [feedback_dangerous_mode.md](feedback_dangerous_mode.md) -- Full bypass permissions
+
+## Projects
+- [project_flock.md](project_flock.md) -- Flock v0.9.1: macOS Claude Code multiplexer</code></pre>
+
+        <p>The index is capped at 200 lines. It's a table of contents, not a memory store. The agent reads the index, decides which memories are relevant, and reads only those files. This is lazy loading -- you don't embed all 200 memories into every conversation. The index costs maybe 3K tokens. Reading a specific memory costs another 200-500 tokens.</p>
+
+        <h3>RETRIEVAL</h3>
+
+        <p>There's no search algorithm. The agent reads the index, uses the name and description fields to decide relevance, and reads the files it needs. This works because:</p>
+
+        <ol>
+          <li>The index is small enough to fit in context (3K tokens)</li>
+          <li>The descriptions are written to be maximally informative for relevance decisions</li>
+          <li>The agent is an LLM -- it's better at judging relevance from natural language descriptions than any cosine similarity score</li>
+        </ol>
+
+        <p>In practice, the agent reads 5-15 memory files per session, depending on the task. Total memory context: 5-10K tokens. That's a fraction of what a RAG pipeline would inject.</p>
+
+        <h2>WHY GREP BEATS COSINE SIMILARITY</h2>
+
+        <p>For this problem, at this scale, exact match and keyword search outperform semantic similarity. Here's why:</p>
+
+        <p><strong>Precision matters more than recall.</strong> When the agent retrieves a memory about dark themes, it needs exactly the right memory -- not five memories that are vaguely about themes. A grep for "dark theme" in the index returns exactly one result. A vector search returns a ranked list where the correct memory might be third, behind memories about "theme configuration" and "dark mode in the terminal."</p>
+
+        <p><strong>The LLM is the semantic layer.</strong> Vector search uses embeddings to approximate semantic understanding. But the agent IS a language model. It already understands semantics. Giving it the raw index and letting it decide is using a better semantic engine than any embedding model.</p>
+
+        <p><strong>Debuggability.</strong> When the agent acts on a wrong memory, you can trace exactly what happened. Open the index, find the memory, read it, fix it. The entire memory system is a directory of text files. <code>grep -r "dark theme" memory/</code> tells you everything. Try debugging why a vector search returned the wrong result.</p>
+
+        <h2>WRITE CONVENTIONS</h2>
+
+        <p>When to write memory is as important as how to store it. We follow strict rules:</p>
+
+        <p><strong>Save feedback immediately.</strong> When the user corrects the agent ("don't do that", "stop doing X"), that correction becomes a feedback memory before anything else happens. Feedback memories include a <strong>Why</strong> line (the reason for the correction) and a <strong>How to apply</strong> line (when the rule kicks in). The why matters because it lets the agent judge edge cases instead of blindly following rules.</p>
+
+        <p><strong>Don't save what the code already knows.</strong> File paths, architecture patterns, function signatures -- these are in the codebase. Reading the code is authoritative. A memory about "the auth module is in src/auth/" becomes stale the moment someone renames the directory. The code never lies. Memory can.</p>
+
+        <p><strong>Convert relative dates.</strong> "Next Thursday" in a memory is meaningless two weeks later. All dates are stored as absolutes: "2026-03-05". This seems minor until you have a project memory that says "freeze is next week" and the agent reads it a month later.</p>
+
+        <p><strong>Verify before acting.</strong> A memory that names a specific file, function, or flag is a claim about the past. Before recommending it, the agent checks that it still exists. "The memory says X exists" is not the same as "X exists now."</p>
+
+        <h2>MULTI-TIER MEMORY</h2>
+
+        <p>The flat-file system is one tier in a larger hierarchy:</p>
+
+        <ol>
+          <li><strong>Project memory files</strong> -- the system described above. Per-project, loaded by the agent at session start.</li>
+          <li><strong>Session debriefs</strong> -- end-of-session summaries capturing decisions, open threads, and outcomes. Stored as structured JSON. Queryable for continuity between sessions.</li>
+          <li><strong>Knowledge base</strong> -- an Obsidian vault serving as long-term storage. Session logs, research findings, project documentation. The agent reads and writes to it naturally during sessions.</li>
+        </ol>
+
+        <p>Each tier has different read/write patterns. Project memory is loaded automatically. Session debriefs are queried on demand ("what was I working on yesterday?"). The knowledge base is referenced when the agent needs deeper context than project memory provides.</p>
+
+        <h2>WHAT WE'D CHANGE</h2>
+
+        <p>The system works well at its current scale. The weaknesses we've identified:</p>
+
+        <p><strong>Index maintenance is manual-ish.</strong> Adding a memory is a two-step process: write the file, update the index. The agent does this automatically, but occasionally the index drifts from the actual files. An fswatch-based sync would eliminate this.</p>
+
+        <p><strong>No temporal queries.</strong> "What did I decide about X last week?" requires reading session debriefs, not project memory. The boundary between "what's true now" (project memory) and "what happened when" (debriefs) could be cleaner.</p>
+
+        <p><strong>Scale ceiling is real.</strong> At 500+ memories, the index stops fitting comfortably in context. We haven't hit this yet, but the architecture doesn't scale to thousands of entries without adding a search layer. For the single-user coding agent use case, 200 entries covers months of work. For multi-user or enterprise use, you'd need something else.</p>
+
+        <h2>THE ARGUMENT</h2>
+
+        <p>Vectors solve a real problem. If you're building a support agent that searches 50,000 knowledge base articles, use them. That's what they're for.</p>
+
+        <p>Agent memory isn't that problem. It's a small, structured, categorical dataset that a human needs to read and edit and a language model needs to reason about. For this problem, flat files with frontmatter and an LLM-readable index beat vectors on precision, debuggability, editability, and cold-start simplicity.</p>
+
+        <p>The best retrieval engine for natural language descriptions is a language model. Give it the index. It already knows what's relevant.</p>
+
+      </div>
+
+      <div class="post-nav reveal">
+        <a href="/posts/" style="font-family: var(--pixel); font-size: 10px; letter-spacing: 1px; color: var(--muted);">&larr; ALL POSTS</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <span class="footer-brand">AP.HAUS 2026</span>
+    <div class="footer-links">
+      <a href="https://github.com/Divagation" target="_blank" rel="noopener">GITHUB</a>
+      <a href="https://baa.haus" target="_blank" rel="noopener">BAA.HAUS</a>
+      <a href="#">TOP</a>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+</body>
+</html>
