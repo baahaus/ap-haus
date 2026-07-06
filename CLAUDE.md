@@ -23,7 +23,7 @@ not identity.
   businesses. Pittsburgh." Trades-first, automation as upsell for existing
   clients only. Municipal work: parked.
 - **Pricing on the site**: flat fees, shown openly, anchored low to fill the
-  pipeline — Site Rebuild from $3,500, Site + Booking from $6,500, Care Plan
+  pipeline — Site Rebuild from $1,500, Site + Booking from $4,500, Care Plan
   $150/mo, Office Automation from $500/mo (existing clients). Never hourly.
 - **Lead magnet**: free homepage rebuild ("the teardown") — standing offer on
   every page, CTA "GET A FREE MOCKUP".
