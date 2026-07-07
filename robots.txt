@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /teasers/
+
+Sitemap: https://ap.haus/sitemap.xml

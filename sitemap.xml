@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ap.haus/</loc><priority>1.0</priority></url>
+  <url><loc>https://ap.haus/work/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/work/attirer-grandeur/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/work/graciano/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/work/sports-and-courts/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/services/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/about/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/contact/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/lab/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/posts/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/posts/memory-without-vectors/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/posts/compressing-the-tool-layer/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/posts/parallel-agents-isolated-contexts/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/research/</loc><priority>0.7</priority></url>
+  <url><loc>https://ap.haus/products/</loc><priority>0.7</priority></url>
+</urlset>
