@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Baltimore House preview</title>
+  <style>
+    :root{--ink:#0e1b24;--cream:#f2ece0;--paper:#faf6ee;--navy:#0b3954;--tile:#c1442d;--gold:#b98a3e;--muted:#6c6153;--line:rgba(14,27,36,.18)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Instrument Sans,Avenir Next,system-ui,sans-serif;line-height:1.38}img{max-width:100%;display:block}
+    .nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,60px);background:color-mix(in oklab,var(--cream) 88%,white);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);font:12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}.logo{font-family:Georgia,serif;font-size:clamp(22px,3vw,38px);letter-spacing:-.06em;text-transform:none;color:var(--navy)}.logo b{color:var(--tile);font-weight:400}.nav a{color:var(--ink);text-decoration:none}
+    .hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);gap:clamp(28px,5vw,80px);align-items:stretch;padding:clamp(28px,5vw,70px) clamp(18px,5vw,72px)}
+    .copy{display:flex;flex-direction:column;justify-content:center}.kicker{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--tile);margin-bottom:22px}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(50px,7.6vw,112px);line-height:.86;letter-spacing:-.08em;margin:0 0 28px}.lead{font-size:clamp(19px,2vw,26px);max-width:720px;color:#453b30;margin:0 0 30px}.actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--cream);text-decoration:none;font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}.btn.alt{background:transparent;color:var(--ink)}
+    .photoCard{position:relative;min-height:620px;overflow:hidden;border:1px solid var(--line);background:#ddd}.photoCard img{width:100%;height:100%;object-fit:cover}.photoCard:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(9,16,22,.72))}.photoNote{position:absolute;left:22px;right:22px;bottom:22px;color:#fff;background:rgba(11,57,84,.72);padding:18px;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}.photoNote strong{display:block;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:#f2c76d;margin-bottom:7px}.photoNote span{font-family:Georgia,serif;font-size:clamp(22px,2.6vw,38px);line-height:1;letter-spacing:-.04em}
+    .strip{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);background:var(--paper)}.strip div{padding:24px clamp(18px,3vw,42px);border-right:1px solid var(--line)}.strip div:last-child{border-right:0}.strip small{display:block;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--tile);margin-bottom:8px}.strip b{font-family:Georgia,serif;font-size:clamp(20px,2.1vw,32px);font-weight:400;letter-spacing:-.04em}
+    .section{padding:clamp(54px,8vw,110px) clamp(18px,5vw,72px)}.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,6vw,92px);align-items:start}.mono{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--tile);margin-bottom:16px}.section h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(38px,5.4vw,80px);line-height:.92;letter-spacing:-.07em;margin:0}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.dish{background:var(--paper);border:1px solid var(--line);padding:24px;min-height:180px}.dish small{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}.dish h3{font-family:Georgia,serif;font-size:29px;letter-spacing:-.045em;margin:12px 0 10px}.dish p{color:var(--muted);margin:0;font-size:16px}
+    .problem{background:var(--navy);color:var(--cream)}.problem .mono{color:#f2c76d}.problem h2{max-width:900px}.fixList{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.25)}.fixList div{background:var(--navy);padding:28px}.fixList b{font-family:Georgia,serif;font-size:28px;font-weight:400}.fixList p{color:#d9e4ea;margin:12px 0 0;font-size:16px}
+    .quote{display:grid;grid-template-columns:1fr .7fr;gap:40px;align-items:end;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}blockquote{font-family:Georgia,serif;font-size:clamp(30px,4.2vw,62px);line-height:.98;letter-spacing:-.06em;margin:0}.meta{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    footer{padding:28px clamp(18px,5vw,72px);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    @media(max-width:900px){.hero,.split,.quote{grid-template-columns:1fr}.photoCard{min-height:420px}.strip,.fixList{grid-template-columns:1fr}.strip div{border-right:0;border-bottom:1px solid var(--line)}.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="logo">Baltimore <b>House</b></div><a href="https://ap.haus">private AP.haus preview</a></nav>
+  <main class="hero">
+    <section class="copy">
+      <div class="kicker">176 Curry Hollow Rd, Pleasant Hills · Seafood since 1978</div>
+      <h1>40 years of crab legs deserves a site that loads.</h1>
+      <p class="lead">Right now baltimorehousepgh.com throws a broken SSL error before anyone sees a menu. Live Maryland blue crabs, two bars, banquet rooms, weekly live music, none of it visible online. This preview shows the simple fix.</p>
+      <div class="actions"><a class="btn" href="#menu">See the menu direction</a><a class="btn alt" href="#fix">What we would fix</a></div>
+    </section>
+    <figure class="photoCard">
+      <img src="../../assets/teasers/baltimore-house-exterior.jpg" alt="Baltimore House restaurant exterior in Pleasant Hills">
+      <figcaption class="photoNote"><strong>real building, real sign</strong><span>The roadside landmark on Curry Hollow Rd deserves a site that actually opens.</span></figcaption>
+    </figure>
+  </main>
+  <section class="strip"><div><small>Cuisine</small><b>Seafood &amp; Japanese</b></div><div><small>Neighborhood</small><b>Pleasant Hills</b></div><div><small>Phone</small><b>412 653 3800</b></div><div><small>Priority</small><b>Fix the SSL error</b></div></section>
+  <section class="section split" id="menu">
+    <div><div class="mono">the menu is the draw</div><h2>Crab legs first, everything else after.</h2></div>
+    <div class="cards">
+      <article class="dish"><small>signature</small><h3>Live Maryland blue crabs</h3><p>Arrive live every Thursday. The one thing Pittsburgh cannot get anywhere else, and it is buried behind a browser warning.</p></article>
+      <article class="dish"><small>all you can eat</small><h3>Crab legs &amp; prime rib</h3><p>Weekly specials that should be the homepage, not a PDF nobody can find.</p></article>
+      <article class="dish"><small>events</small><h3>Live music &amp; karaoke</h3><p>Weekly entertainment calendar that currently has no working place to live online.</p></article>
+      <article class="dish"><small>groups</small><h3>Banquet room</h3><p>Two bars, game rooms, and seating for 350. A booking page would sell this on its own.</p></article>
+    </div>
+  </section>
+  <section class="section problem" id="fix">
+    <div class="mono">the problem is specific</div><h2>baltimorehousepgh.com fails to load with an invalid SSL certificate error before a customer sees anything.</h2>
+    <div class="fixList"><div><b>1. Fix the certificate</b><p>Restore a basic, secure, working site instead of a browser warning screen.</p></div><div><b>2. Menu &amp; hours up top</b><p>Mobile-first layout built around the crab nights and weekly specials.</p></div><div><b>3. Keep it alive</b><p>Hosting, backups, simple edits, no mystery subscription stack.</p></div></div>
+  </section>
+  <section class="section quote"><blockquote>“Very good seafood, Maryland Steamed Crabs in season... a must visit.”</blockquote><div class="meta">public review surfaced in local coverage · private concept only</div></section>
+  <footer><span>AP.haus · private preview</span><span>Not indexed · not public portfolio</span></footer>
+</body>
+</html>

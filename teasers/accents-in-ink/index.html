@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Accents In Ink preview</title>
+  <style>
+    :root{--ink:#151313;--cream:#ece7de;--paper:#f7f4ee;--black:#181616;--tile:#b5432a;--gold:#a9812f;--muted:#6b6255;--line:rgba(21,19,19,.18)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Instrument Sans,Avenir Next,system-ui,sans-serif;line-height:1.38}img{max-width:100%;display:block}
+    .nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,60px);background:color-mix(in oklab,var(--cream) 88%,white);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);font:12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}.logo{font-family:Georgia,serif;font-size:clamp(22px,3vw,38px);letter-spacing:-.06em;text-transform:none;color:var(--black)}.logo b{color:var(--tile);font-weight:400}.nav a{color:var(--ink);text-decoration:none}
+    .hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);gap:clamp(28px,5vw,80px);align-items:stretch;padding:clamp(28px,5vw,70px) clamp(18px,5vw,72px)}
+    .copy{display:flex;flex-direction:column;justify-content:center}.kicker{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--tile);margin-bottom:22px}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(48px,7.2vw,104px);line-height:.86;letter-spacing:-.08em;margin:0 0 28px}.lead{font-size:clamp(19px,2vw,26px);max-width:720px;color:#413a30;margin:0 0 30px}.actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--cream);text-decoration:none;font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}.btn.alt{background:transparent;color:var(--ink)}
+    .photoCard{position:relative;min-height:620px;overflow:hidden;border:1px solid var(--line);background:#ddd}.photoCard img{width:100%;height:100%;object-fit:cover}.photoCard:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,8,8,.72))}.photoNote{position:absolute;left:22px;right:22px;bottom:22px;color:#fff;background:rgba(21,19,19,.72);padding:18px;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}.photoNote strong{display:block;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:#f0b96a;margin-bottom:7px}.photoNote span{font-family:Georgia,serif;font-size:clamp(22px,2.6vw,38px);line-height:1;letter-spacing:-.04em}
+    .strip{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);background:var(--paper)}.strip div{padding:24px clamp(18px,3vw,42px);border-right:1px solid var(--line)}.strip div:last-child{border-right:0}.strip small{display:block;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--tile);margin-bottom:8px}.strip b{font-family:Georgia,serif;font-size:clamp(20px,2.1vw,32px);font-weight:400;letter-spacing:-.04em}
+    .section{padding:clamp(54px,8vw,110px) clamp(18px,5vw,72px)}.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,6vw,92px);align-items:start}.mono{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--tile);margin-bottom:16px}.section h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(38px,5.4vw,80px);line-height:.92;letter-spacing:-.07em;margin:0}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.dish{background:var(--paper);border:1px solid var(--line);padding:24px;min-height:180px}.dish small{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}.dish h3{font-family:Georgia,serif;font-size:29px;letter-spacing:-.045em;margin:12px 0 10px}.dish p{color:var(--muted);margin:0;font-size:16px}
+    .problem{background:var(--black);color:var(--cream)}.problem .mono{color:#f0b96a}.problem h2{max-width:900px}.fixList{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.2)}.fixList div{background:var(--black);padding:28px}.fixList b{font-family:Georgia,serif;font-size:28px;font-weight:400}.fixList p{color:#d8d3ca;margin:12px 0 0;font-size:16px}
+    .quote{display:grid;grid-template-columns:1fr .7fr;gap:40px;align-items:end;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}blockquote{font-family:Georgia,serif;font-size:clamp(30px,4.2vw,62px);line-height:.98;letter-spacing:-.06em;margin:0}.meta{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    footer{padding:28px clamp(18px,5vw,72px);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    @media(max-width:900px){.hero,.split,.quote{grid-template-columns:1fr}.photoCard{min-height:420px}.strip,.fixList{grid-template-columns:1fr}.strip div{border-right:0;border-bottom:1px solid var(--line)}.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="logo">Accents In <b>Ink</b></div><a href="https://ap.haus">private AP.haus preview</a></nav>
+  <main class="hero">
+    <section class="copy">
+      <div class="kicker">3825 Willow Ave, Castle Shannon · Tattoo &amp; piercing since 1994</div>
+      <h1>31 years of Bob's work, pointed at an ad farm.</h1>
+      <p class="lead">accentsinink.com no longer belongs to the shop. It redirects straight to an unrelated shopping site. Meanwhile Bob has a 4.9 star Google rating built one appointment at a time. This preview shows what that reputation deserves online.</p>
+      <div class="actions"><a class="btn" href="#work">See the work direction</a><a class="btn alt" href="#fix">What we would fix</a></div>
+    </section>
+    <figure class="photoCard">
+      <img src="../../assets/teasers/accents-in-ink-shop.jpg" alt="Fresh tattoo work done at Accents In Ink">
+      <figcaption class="photoNote"><strong>real work, real shop</strong><span>Clean linework from inside the Willow Ave studio, the kind of photo that should be the homepage.</span></figcaption>
+    </figure>
+  </main>
+  <section class="strip"><div><small>Est.</small><b>1994</b></div><div><small>Neighborhood</small><b>Castle Shannon</b></div><div><small>Phone</small><b>412 563 8281</b></div><div><small>Priority</small><b>Reclaim the domain</b></div></section>
+  <section class="section split" id="work">
+    <div><div class="mono">portfolio is the pitch</div><h2>Show the work, then make booking easy.</h2></div>
+    <div class="cards">
+      <article class="dish"><small>custom</small><h3>Black &amp; grey freehand</h3><p>Bob's specialty for three decades. It belongs front and center, not hidden behind a redirect.</p></article>
+      <article class="dish"><small>by appointment</small><h3>Consultation first</h3><p>A simple booking form beats another phone tag cycle for both sides.</p></article>
+      <article class="dish"><small>trust</small><h3>4.9 stars, 42 reviews</h3><p>That reputation is currently invisible to anyone who searches the actual business name.</p></article>
+      <article class="dish"><small>piercing</small><h3>Piercing &amp; jewelry</h3><p>A second service line with zero presence on the hijacked domain today.</p></article>
+    </div>
+  </section>
+  <section class="section problem" id="fix">
+    <div class="mono">the problem is specific</div><h2>accentsinink.com now redirects to an unrelated shopping site instead of the studio.</h2>
+    <div class="fixList"><div><b>1. Reclaim or replace</b><p>Get the domain back under control or move everything to a clean new one.</p></div><div><b>2. Portfolio up front</b><p>Real healed work, organized by style, loading fast on a phone.</p></div><div><b>3. Keep it alive</b><p>Hosting, backups, simple edits, no mystery subscription stack.</p></div></div>
+  </section>
+  <section class="section quote"><blockquote>“Bob is a master of his craft... I won't go anywhere else!”</blockquote><div class="meta">public review surfaced in local coverage · private concept only</div></section>
+  <footer><span>AP.haus · private preview</span><span>Not indexed · not public portfolio</span></footer>
+</body>
+</html>

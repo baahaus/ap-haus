@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Bangal Kabab House preview</title>
+  <style>
+    :root{--ink:#1c1712;--cream:#f4ece0;--paper:#fbf6ec;--maroon:#7a1f1a;--tile:#d9542c;--gold:#c99245;--muted:#726554;--line:rgba(28,23,18,.18)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Instrument Sans,Avenir Next,system-ui,sans-serif;line-height:1.38}img{max-width:100%;display:block}
+    .nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px clamp(18px,4vw,60px);background:color-mix(in oklab,var(--cream) 88%,white);border-bottom:1px solid var(--line);backdrop-filter:blur(10px);font:12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}.logo{font-family:Georgia,serif;font-size:clamp(20px,2.6vw,34px);letter-spacing:-.06em;text-transform:none;color:var(--maroon)}.logo b{color:var(--tile);font-weight:400}.nav a{color:var(--ink);text-decoration:none}
+    .hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);gap:clamp(28px,5vw,80px);align-items:stretch;padding:clamp(28px,5vw,70px) clamp(18px,5vw,72px)}
+    .copy{display:flex;flex-direction:column;justify-content:center}.kicker{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--tile);margin-bottom:22px}h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(44px,6.6vw,98px);line-height:.88;letter-spacing:-.08em;margin:0 0 28px}.lead{font-size:clamp(19px,2vw,26px);max-width:720px;color:#463b2e;margin:0 0 30px}.actions{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;border:1px solid var(--ink);background:var(--ink);color:var(--cream);text-decoration:none;font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}.btn.alt{background:transparent;color:var(--ink)}
+    .photoCard{position:relative;min-height:620px;overflow:hidden;border:1px solid var(--line);background:#ddd}.photoCard img{width:100%;height:100%;object-fit:cover}.photoCard:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(15,8,5,.78))}.photoNote{position:absolute;left:22px;right:22px;bottom:22px;color:#fff;background:rgba(122,31,26,.72);padding:18px;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}.photoNote strong{display:block;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:#f8c86d;margin-bottom:7px}.photoNote span{font-family:Georgia,serif;font-size:clamp(22px,2.6vw,38px);line-height:1;letter-spacing:-.04em}
+    .strip{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);background:var(--paper)}.strip div{padding:24px clamp(18px,3vw,42px);border-right:1px solid var(--line)}.strip div:last-child{border-right:0}.strip small{display:block;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--tile);margin-bottom:8px}.strip b{font-family:Georgia,serif;font-size:clamp(20px,2.1vw,32px);font-weight:400;letter-spacing:-.04em}
+    .section{padding:clamp(54px,8vw,110px) clamp(18px,5vw,72px)}.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,6vw,92px);align-items:start}.mono{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--tile);margin-bottom:16px}.section h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(36px,5vw,74px);line-height:.94;letter-spacing:-.07em;margin:0}.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.dish{background:var(--paper);border:1px solid var(--line);padding:24px;min-height:180px}.dish small{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--maroon)}.dish h3{font-family:Georgia,serif;font-size:29px;letter-spacing:-.045em;margin:12px 0 10px}.dish p{color:var(--muted);margin:0;font-size:16px}
+    .problem{background:var(--maroon);color:var(--cream)}.problem .mono{color:#f8c86d}.problem h2{max-width:900px}.fixList{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.25)}.fixList div{background:var(--maroon);padding:28px}.fixList b{font-family:Georgia,serif;font-size:28px;font-weight:400}.fixList p{color:#f0dccf;margin:12px 0 0;font-size:16px}
+    .quote{display:grid;grid-template-columns:1fr .7fr;gap:40px;align-items:end;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}blockquote{font-family:Georgia,serif;font-size:clamp(28px,4vw,58px);line-height:1;letter-spacing:-.06em;margin:0}.meta{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    footer{padding:28px clamp(18px,5vw,72px);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    @media(max-width:900px){.hero,.split,.quote{grid-template-columns:1fr}.photoCard{min-height:420px}.strip,.fixList{grid-template-columns:1fr}.strip div{border-right:0;border-bottom:1px solid var(--line)}.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav class="nav"><div class="logo">Bangal <b>Kabab House</b></div><a href="https://ap.haus">private AP.haus preview</a></nav>
+  <main class="hero">
+    <section class="copy">
+      <div class="kicker">320 Atwood St, Oakland · Halal Bangladeshi &amp; Indian since 2013</div>
+      <h1>The restaurant is thriving. The domain is gone.</h1>
+      <p class="lead">bangalpa.com doesn't even resolve anymore, it just errors out. Meanwhile the kitchen is still doing brisk Grubhub business and Bengal Kabab has real fans on Tripadvisor. This preview shows the site that should be backing that up.</p>
+      <div class="actions"><a class="btn" href="#menu">See the menu direction</a><a class="btn alt" href="#fix">What we would fix</a></div>
+    </section>
+    <figure class="photoCard">
+      <img src="../../assets/teasers/bangal-kabab-house.jpg" alt="Bangal Kabab House and Restaurant storefront at night">
+      <figcaption class="photoNote"><strong>real storefront, real neon</strong><span>Tucked on Atwood St near Oakland, open sign lit, phone number right on the awning.</span></figcaption>
+    </figure>
+  </main>
+  <section class="strip"><div><small>Cuisine</small><b>Bangladeshi &amp; Indian</b></div><div><small>Neighborhood</small><b>Oakland</b></div><div><small>Phone</small><b>412 605 0521</b></div><div><small>Priority</small><b>Get a domain online</b></div></section>
+  <section class="section split" id="menu">
+    <div><div class="mono">the food already sells itself</div><h2>Put the biryani and kababs where people can find them.</h2></div>
+    <div class="cards">
+      <article class="dish"><small>signature</small><h3>Bengal special biryani</h3><p>Chicken, lamb, shrimp and vegetables in one dish, exactly the kind of order-driver a homepage should lead with.</p></article>
+      <article class="dish"><small>tandoor</small><h3>Sheekh &amp; chicken tikka kabab</h3><p>The dish the restaurant is named for, sizzling out of the clay oven.</p></article>
+      <article class="dish"><small>halal</small><h3>100% halal menu</h3><p>A clear, searchable fact that currently has nowhere to live online.</p></article>
+      <article class="dish"><small>delivery</small><h3>Grubhub &amp; direct ordering</h3><p>Real order volume already exists. A working site turns browsers into direct orders instead of platform fees.</p></article>
+    </div>
+  </section>
+  <section class="section problem" id="fix">
+    <div class="mono">the problem is specific</div><h2>bangalpa.com no longer resolves. It's not slow or outdated, it's gone.</h2>
+    <div class="fixList"><div><b>1. Stand up a real site</b><p>Menu, hours, delivery links, and directions live again under a working domain.</p></div><div><b>2. Menu in ten seconds</b><p>Mobile-first sections for biryani, kabab, and the halal lunch buffet.</p></div><div><b>3. Keep it alive</b><p>Hosting, backups, simple edits, no mystery subscription stack.</p></div></div>
+  </section>
+  <section class="section quote"><blockquote>“The best Indian food in the city and a bit of a hidden gem.”</blockquote><div class="meta">public review surfaced in local coverage · private concept only</div></section>
+  <footer><span>AP.haus · private preview</span><span>Not indexed · not public portfolio</span></footer>
+</body>
+</html>
