@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bloom Cigar Company · Pittsburgh's tobacconist since 1955</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#efe7dc;--ink:#1c1614;--acc:#8a5a2c;--gold:#d7a35a;--dark:#241a16;--line:rgba(0,0,0,.18);--linelt:rgba(255,255,255,.22)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Instrument Sans,Avenir Next,system-ui,sans-serif;line-height:1.4}
+img{max-width:100%;display:block}
+a{color:inherit}
+.mono{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase}
+.serif{font-family:Georgia,serif;font-weight:400;letter-spacing:-.05em}
+
+.ribbon{background:var(--dark);color:#cbb9a4;text-align:center;padding:8px 16px;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}
+.ribbon b{color:var(--gold);font-weight:700}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px clamp(18px,4vw,58px);border-bottom:1px solid var(--line);position:relative}
+.nav .brand{font-family:Georgia,serif;font-size:clamp(22px,3vw,34px);letter-spacing:-.05em;color:#2a1d16;text-decoration:none;line-height:1}
+.nav .brand small{display:block;font:10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.28em;text-transform:uppercase;color:var(--acc);margin-top:4px}
+.nav ul{display:flex;gap:clamp(14px,2.5vw,34px);list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase}
+.nav ul a:hover{color:var(--acc)}
+.callbtn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;padding:12px 18px;font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.callbtn:hover{background:var(--acc);border-color:var(--acc)}
+
+.hero{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,6vw,84px);padding:clamp(38px,6vw,90px) clamp(18px,5vw,70px);align-items:center}
+.eyebrow{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:18px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(42px,6.4vw,92px);line-height:.9;letter-spacing:-.06em;margin:0 0 26px}
+.lead{font-size:clamp(17px,1.8vw,23px);max-width:640px;color:color-mix(in srgb,var(--ink) 76%,var(--bg));margin:0 0 30px}
+.btnrow{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;padding:15px 22px;font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+.photo{position:relative;min-height:540px;border:1px solid var(--line);overflow:hidden;background:#111}
+.photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.7))}
+.caption{position:absolute;left:20px;right:20px;bottom:20px;color:#fff;z-index:1}
+.caption small{display:block;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.caption b{font-family:Georgia,serif;font-size:clamp(20px,2.4vw,32px);font-weight:400;line-height:1.02;letter-spacing:-.04em}
+
+.strip{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);background:rgba(255,255,255,.35)}
+.strip div{padding:22px clamp(16px,2.6vw,38px);border-right:1px solid var(--line)}
+.strip div:last-child{border-right:0}
+.strip small{display:block;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
+.strip b{font-family:Georgia,serif;font-size:clamp(17px,1.8vw,25px);font-weight:400;letter-spacing:-.04em}
+
+.section{padding:clamp(56px,8vw,105px) clamp(18px,5vw,70px)}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,6vw,80px);align-items:start}
+h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(34px,4.8vw,70px);line-height:.92;letter-spacing:-.06em;margin:0 0 20px}
+.body{font-size:clamp(16px,1.6vw,20px);color:color-mix(in srgb,var(--ink) 76%,var(--bg));max-width:620px}
+.sideimg{position:relative;border:1px solid var(--line);overflow:hidden;min-height:480px}
+.sideimg img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.sideimg figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 18px;background:rgba(0,0,0,.55);color:#fff;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase}
+
+.brands{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.brands span{border:1px solid var(--line);background:rgba(255,255,255,.4);padding:10px 16px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}
+.note{margin-top:22px;font-size:15px;color:color-mix(in srgb,var(--ink) 60%,var(--bg))}
+
+.dark{background:var(--dark);color:var(--bg)}
+.dark .eyebrow,.dark .mono{color:var(--gold)}
+.dark .body{color:color-mix(in srgb,#efe7dc 80%,#241a16)}
+.dark .card{border-color:var(--linelt);background:transparent}
+.dark .card p{color:color-mix(in srgb,#efe7dc 76%,#241a16)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.card{background:rgba(255,255,255,.45);border:1px solid var(--line);padding:26px}
+.card h3{font-family:Georgia,serif;font-size:24px;font-weight:400;letter-spacing:-.04em;margin:0 0 10px}
+.card p{margin:0;font-size:16px;color:color-mix(in srgb,var(--ink) 72%,var(--bg))}
+
+.camp{border-block:1px solid var(--line);background:linear-gradient(0deg,rgba(215,163,90,.14),rgba(215,163,90,.14))}
+.camp .kicker{display:inline-block;border:1px solid var(--acc);color:var(--acc);padding:8px 14px;font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.quote{border:1px solid var(--linelt);padding:28px}
+.quote p{font-family:Georgia,serif;font-size:clamp(18px,1.8vw,23px);letter-spacing:-.03em;line-height:1.25;margin:0 0 18px}
+.quote small{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+
+.visit{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,6vw,80px);align-items:stretch}
+.hours{margin-top:28px;border-top:1px solid var(--line)}
+.hours div{display:flex;justify-content:space-between;padding:12px 2px;border-bottom:1px solid var(--line);font-size:16px}
+.hours b{font-weight:600}
+.vmeta{margin-top:26px;display:grid;gap:8px;font-size:17px}
+.vmeta a{color:var(--acc)}
+
+footer{background:var(--dark);color:#cbb9a4;padding:34px clamp(18px,5vw,70px);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font:11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em;text-transform:uppercase}
+footer .fb{color:var(--gold)}
+
+@media(max-width:940px){
+.hero,.split,.visit{grid-template-columns:1fr}
+.photo{min-height:400px}.sideimg{min-height:340px}
+.strip{grid-template-columns:1fr 1fr}
+.strip div{border-bottom:1px solid var(--line)}
+.cards,.quotes{grid-template-columns:1fr}
+.nav ul{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Draft mockup by <b>ap.haus</b> · not the live site · all photos and copy easily swappable</div>
+
+<nav class="nav">
+  <a class="brand" href="#">Bloom Cigar Company<small>Pittsburgh · Est. 1955</small></a>
+  <ul>
+    <li><a href="#humidor">The Humidor</a></li>
+    <li><a href="#lounge">The Lounge</a></li>
+    <li><a href="#camp">Cigar Camp</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a class="callbtn" href="tel:+14124314277">(412) 431-4277</a>
+</nav>
+
+<main class="hero">
+  <section>
+    <div class="eyebrow">54 S 12th St · South Side · Pittsburgh</div>
+    <h1>Pittsburgh's tobacconist since 1955.</h1>
+    <p class="lead">The largest retail and wholesale cigar store in the city. A walk-in humidor that runs front to back, a lounge worth staying in, and seventy years of straight answers about cigars. No hype, no closeouts, always fresh.</p>
+    <div class="btnrow">
+      <a class="btn" href="#visit">Visit the shop</a>
+      <a class="btn ghost" href="#humidor">Browse the humidor</a>
+    </div>
+  </section>
+  <figure class="photo">
+    <img src="/assets/teasers/bloom-cigar.jpg" alt="The lounge at Bloom Cigar Company, full house">
+    <figcaption class="caption">
+      <small>The lounge on a good afternoon</small>
+      <b>Pull up a chair. Everyone here was new once.</b>
+    </figcaption>
+  </figure>
+</main>
+
+<section class="strip">
+  <div><small>Established</small><b>1955, South Side</b></div>
+  <div><small>Selection</small><b>Largest humidor in Pittsburgh</b></div>
+  <div><small>Tradition</small><b>Home of Cigar Camp&trade;</b></div>
+  <div><small>Storage</small><b>Entire store climate controlled</b></div>
+</section>
+
+<section class="section split" id="humidor">
+  <figure class="sideimg">
+    <img src="/assets/teasers/bloom-humidor.jpg" alt="Cigar boxes floor to ceiling inside Bloom's humidor">
+    <figcaption>Inside the walk-in · floor to ceiling</figcaption>
+  </figure>
+  <div>
+    <div class="eyebrow">The Humidor</div>
+    <h2>Front of the shop to the back. All of it humidor.</h2>
+    <p class="body">Bloom's moves more cigars than anyone in the area, retail and wholesale, so nothing sits around going stale. The whole store is climate controlled, and if a stick ever disappoints, it comes back for a full credit, refund, or replacement. Your call.</p>
+    <div class="brands">
+      <span>Padron</span><span>Ashton</span><span>Oliva</span><span>Drew Estate</span><span>Liga Privada</span><span>Tatuaje</span><span>Illusione</span><span>Rocky Patel</span><span>My Father</span><span>Dunbarton</span>
+    </div>
+    <p class="note">Plus the house recommendations. Tell Mark what you like and he will put something in your hand.</p>
+  </div>
+</section>
+
+<section class="section dark" id="lounge">
+  <div class="split">
+    <div>
+      <div class="eyebrow">The Lounge</div>
+      <h2>Buy a stick, sit a spell.</h2>
+      <p class="body">Leather chairs, good company, and zero pretension. First cigar or thirty years in, somebody will talk to you like a regular. It has been that way for decades and it is not changing.</p>
+    </div>
+    <div class="quotes">
+      <div class="quote"><p>"The best cigar shop and lounge in Pittsburgh. The humidor runs all the way from the front of the shop to the back."</p><small>Troy L. · Yelp</small></div>
+      <div class="quote"><p>"Mark is a most gracious host and quick with snappy repartee."</p><small>Yelp review</small></div>
+      <div class="quote"><p>"It doesn't matter if you're trying your first cigar or you're a veteran of the Leaf."</p><small>Yelp review</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section camp" id="camp">
+  <div class="split">
+    <div>
+      <span class="kicker">Saturdays at Bloom's</span>
+      <h2>Cigar Camp&trade;</h2>
+    </div>
+    <div>
+      <p class="body">It started as a bookkeeping day with a few friends and cigars. Decades later it is a Pittsburgh institution: the shop fills up, the smoke rolls, and the conversation takes care of itself. If you have never been, come by on a Saturday and see what the fuss is about.</p>
+      <p class="note">Next Cigar Camp dates and specials would post right here, updated in seconds.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section visit" id="visit">
+  <div>
+    <div class="eyebrow">Visit</div>
+    <h2>South Side, one block off East Carson.</h2>
+    <div class="hours">
+      <div><span>Monday to Friday</span><b>12:00 PM to 6:00 PM</b></div>
+      <div><span>Saturday</span><b>12:00 PM to 4:00 PM</b></div>
+      <div><span>Sunday</span><b>Closed</b></div>
+    </div>
+    <div class="vmeta">
+      <span>54 S 12th St, Pittsburgh, PA 15203</span>
+      <span><a href="tel:+14124314277">(412) 431-4277</a></span>
+      <span><a href="mailto:bloomcigar@gmail.com">bloomcigar@gmail.com</a></span>
+      <span><a href="https://maps.google.com/?q=Bloom+Cigar+Company+54+S+12th+St+Pittsburgh+PA" target="_blank" rel="noopener">Get directions</a></span>
+    </div>
+  </div>
+  <figure class="sideimg">
+    <img src="/assets/teasers/bloom-storefront.jpg" alt="Bloom Cigar Company storefront on S 12th St">
+    <figcaption>54 S 12th St · street parking out front</figcaption>
+  </figure>
+</section>
+
+<footer>
+  <span>Bloom Cigar Company · Pittsburgh, PA · Est. 1955</span>
+  <span>Must be 21 or older to purchase tobacco products</span>
+  <span class="fb">Draft mockup by ap.haus · private preview, not indexed</span>
+</footer>
+
+</body>
+</html>
