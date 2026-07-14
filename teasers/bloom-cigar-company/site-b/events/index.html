@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The Social Calendar — Bloom Cigar Company — Pittsburgh, Est. 1955</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Pinyon+Script&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<style>
+:root{
+  --paper:oklch(95.5% 0.017 88);      /* aged cream stock */
+  --paper-lift:oklch(97% 0.014 90);   /* lighter mat board */
+  --ink:oklch(23% 0.02 40);           /* espresso */
+  --soft:oklch(40% 0.02 40);
+  --oxblood:oklch(38% 0.13 25);       /* the deep red of a band label */
+  --gold:oklch(58% 0.085 80);         /* antique gold, engraver's line */
+  --gold-soft:oklch(74% 0.055 85);
+  --serif:"Fraunces",Georgia,serif;
+  --book:"EB Garamond",Georgia,serif;
+  --script:"Pinyon Script",cursive;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --gut:clamp(1.2rem,3.5vw,3rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--book);font-size:clamp(1.02rem,.98rem + .2vw,1.14rem);line-height:1.65;-webkit-font-smoothing:antialiased;position:relative}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");background-size:240px 240px;opacity:.15;mix-blend-mode:multiply}
+::selection{background:var(--oxblood);color:var(--paper)}
+img{max-width:100%;display:block}
+a{color:var(--oxblood);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--gold)}
+
+.smallcaps{font-family:var(--book);text-transform:uppercase;letter-spacing:.24em;font-size:.72rem;font-weight:500}
+.script{font-family:var(--script);font-size:clamp(1.6rem,1.2rem + 1.6vw,2.6rem);color:var(--oxblood);line-height:1.1}
+
+.ribbon{background:var(--ink);color:var(--paper);text-align:center;padding:.45rem var(--gut);font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase}
+.ribbon em{font-style:normal;color:var(--gold-soft)}
+
+/* ============ masthead ============ */
+.masthead{text-align:center;padding:clamp(1.6rem,4vh,3rem) var(--gut) 0;position:relative}
+.mast-top{display:flex;justify-content:space-between;align-items:baseline;max-width:1080px;margin:0 auto .6rem}
+.mast-top .smallcaps{color:var(--soft)}
+.mast-top a{text-decoration:none;color:var(--soft)}
+.mast-top a:hover{color:var(--oxblood)}
+.badge{width:clamp(180px,24vw,250px);margin:0 auto;display:block}
+.badge .arc{font-family:var(--book);font-size:15.5px;letter-spacing:.32em;text-transform:uppercase;fill:var(--ink)}
+.badge .arcsm{font-family:var(--book);font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;fill:var(--soft)}
+.badge .yr{font-family:var(--serif);font-weight:600;font-size:44px;letter-spacing:.02em;fill:var(--oxblood)}
+.badge .est{font-family:var(--book);font-size:11px;letter-spacing:.42em;text-transform:uppercase;fill:var(--gold)}
+.badge circle{fill:none;stroke:var(--gold);stroke-width:1}
+.badge .thick{stroke:var(--ink);stroke-width:1.5}
+.badge .dia{fill:var(--gold)}
+.mast-name{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,1rem + 5.4vw,5.4rem);letter-spacing:.04em;line-height:1.02;text-transform:uppercase;margin-top:1rem}
+.mast-sub{margin-top:.5rem;color:var(--soft)}
+.mast-nav{display:flex;justify-content:center;align-items:baseline;gap:clamp(.9rem,2.5vw,1.7rem);margin-top:1.5rem;padding:.85rem var(--gut);border-block:1px solid var(--gold);flex-wrap:wrap}
+.mast-nav a{text-decoration:none;color:var(--ink)}
+.mast-nav a:hover{color:var(--oxblood)}
+.mast-nav .dia{color:var(--gold);font-size:.6rem}
+
+/* ============ ornament helpers ============ */
+.orn{display:flex;align-items:center;gap:1.1rem;justify-content:center;margin:clamp(2.6rem,6vh,4.5rem) auto;max-width:640px;color:var(--gold)}
+.orn::before,.orn::after{content:"";flex:1;border-top:1px solid var(--gold-soft)}
+.orn span{font-size:1.15rem;line-height:1}
+
+.frame{position:relative;border:1px solid var(--gold);padding:clamp(.7rem,1.6vw,1.1rem);background:var(--paper-lift);box-shadow:0 1px 0 oklch(100% 0 0/.6) inset}
+.frame::before{content:"";position:absolute;inset:5px;border:1px solid var(--gold-soft);pointer-events:none}
+.frame .c{position:absolute;width:11px;height:11px;color:var(--gold);font-size:11px;line-height:1;pointer-events:none}
+.frame .c1{top:-6px;left:-6px}.frame .c2{top:-6px;right:-6px}.frame .c3{bottom:-6px;left:-6px}.frame .c4{bottom:-6px;right:-6px}
+.frame img{border:1px solid var(--ink);width:100%;filter:sepia(.14) saturate(.94)}
+.plate{text-align:center;margin-top:.85rem}
+.plate .smallcaps{color:var(--soft)}
+.plate .script{font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem)}
+
+/* ============ hero ============ */
+.hero{max-width:1080px;margin:clamp(2rem,5vh,3.5rem) auto 0;padding-inline:var(--gut)}
+.hero-frame{max-width:980px;margin-inline:auto}
+
+/* ============ statement ============ */
+.statement{text-align:center;max-width:820px;margin:0 auto;padding-inline:var(--gut)}
+.statement h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2.2rem,1.1rem + 4.4vw,4.6rem);line-height:1.08;letter-spacing:-.01em}
+.statement h1 em{font-style:italic;color:var(--oxblood)}
+.statement .lede{margin-top:1.4rem;color:var(--soft);font-size:clamp(1.05rem,1rem + .3vw,1.25rem);max-width:58ch;margin-inline:auto}
+.dc::first-letter{font-family:var(--serif);font-weight:600;font-size:3.1em;float:left;line-height:.82;padding:.06em .12em 0 0;color:var(--oxblood)}
+
+/* ============ chronicle ============ */
+.chronicle{max-width:760px;margin:0 auto;padding-inline:var(--gut)}
+.chron-row{display:flex;align-items:baseline;gap:.9rem;padding:.9rem 0}
+.chron-row .yr{font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--oxblood);min-width:5.2ch}
+.chron-row .dots{flex:1;border-bottom:2px dotted var(--gold-soft);transform:translateY(-4px)}
+.chron-row .what{max-width:34ch;text-align:right;color:var(--soft)}
+
+/* ============ section heads ============ */
+.sect-head{text-align:center;max-width:760px;margin:0 auto clamp(1.8rem,4vh,2.8rem);padding-inline:var(--gut)}
+.sect-head .script{display:block;margin-bottom:.2rem}
+.sect-head h2{font-family:var(--serif);font-weight:500;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(1.5rem,1.1rem + 1.8vw,2.5rem);line-height:1.1}
+.sect-head .rule{display:flex;align-items:center;gap:.8rem;justify-content:center;margin-top:.8rem;color:var(--gold)}
+.sect-head .rule::before,.sect-head .rule::after{content:"";width:72px;border-top:1px solid var(--gold-soft)}
+
+/* ============ house list ============ */
+.house{max-width:1080px;margin:0 auto;padding-inline:var(--gut);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(1.8rem,4.5vw,4rem);align-items:start}
+.house .frame{max-width:430px}
+.menu{border:1px solid var(--gold);padding:clamp(1.3rem,3vw,2.2rem);background:var(--paper-lift);position:relative}
+.menu::before{content:"";position:absolute;inset:5px;border:1px solid var(--gold-soft);pointer-events:none}
+.menu h3{font-family:var(--serif);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:1.05rem;text-align:center;margin-bottom:.4rem}
+.menu .note{text-align:center;color:var(--soft);font-style:italic;margin-bottom:1.2rem}
+.menu-row{display:flex;align-items:baseline;gap:.7rem;padding:.5rem 0;position:relative;z-index:1}
+.menu-row .nm{font-family:var(--serif);font-weight:500;font-size:1.08rem;letter-spacing:.02em}
+.menu-row .dots{flex:1;border-bottom:2px dotted var(--gold-soft);transform:translateY(-4px)}
+.menu-row .tag{font-family:var(--book);font-style:italic;color:var(--soft);font-size:.95rem;text-align:right}
+.menu .fine{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--gold-soft);text-align:center;font-style:italic;color:var(--soft);font-size:.98rem}
+@media (max-width:860px){.house{grid-template-columns:1fr}.house .frame{margin-inline:auto}}
+
+/* ============ guest book ============ */
+.guest{max-width:820px;margin:0 auto;padding-inline:var(--gut)}
+.g-entry{text-align:center;padding:clamp(1.4rem,3.5vh,2.2rem) 0}
+.g-entry+.g-entry{border-top:1px solid var(--gold-soft)}
+.g-entry q{quotes:"\201C" "\201D";font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.3rem,1.05rem + 1.4vw,2rem);line-height:1.25}
+.g-entry q::before,.g-entry q::after{color:var(--gold);font-size:1.2em}
+.g-entry .who{margin-top:.7rem;color:var(--soft)}
+.g-entry .who::before{content:"— "}
+
+/* ============ invitation ============ */
+.invite-wrap{padding-inline:var(--gut)}
+.invite{max-width:680px;margin:0 auto;border:1px solid var(--oxblood);padding:clamp(1.8rem,4.5vw,3.2rem);background:var(--paper-lift);text-align:center;position:relative}
+.invite::before{content:"";position:absolute;inset:6px;border:1px solid var(--gold);pointer-events:none}
+.invite::after{content:"";position:absolute;inset:10px;border:1px solid var(--gold-soft);pointer-events:none}
+.invite>*{position:relative;z-index:1}
+.invite .script{font-size:clamp(1.9rem,1.4rem + 2vw,3rem)}
+.invite h2{font-family:var(--serif);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:clamp(1.7rem,1.2rem + 2.4vw,3rem);margin:.4rem 0 .9rem;color:var(--oxblood)}
+.invite p{color:var(--soft);max-width:46ch;margin-inline:auto}
+.invite .terms{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.2rem;color:var(--ink)}
+.invite .terms span{font-family:var(--book);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
+.invite .terms .dia{color:var(--gold)}
+.invite .rsvp{margin-top:1.5rem}
+
+.btn{display:inline-block;text-decoration:none;cursor:pointer;font-family:var(--book);text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;font-weight:500;padding:.9rem 1.6rem;border:1px solid var(--ink);color:var(--ink);background:transparent;transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.primary{background:var(--oxblood);border-color:var(--oxblood);color:var(--paper)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+
+/* ============ visit ============ */
+.visit{max-width:1080px;margin:0 auto;padding-inline:var(--gut);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(1.8rem,4.5vw,4rem);align-items:start}
+.hours{border:1px solid var(--gold);background:var(--paper-lift);padding:clamp(1.3rem,3vw,2.2rem);position:relative}
+.hours::before{content:"";position:absolute;inset:5px;border:1px solid var(--gold-soft);pointer-events:none}
+.hours h3{font-family:var(--serif);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:1.05rem;text-align:center;margin-bottom:1rem}
+.hours .menu-row .nm{font-family:var(--book);text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;font-weight:500}
+.hours .menu-row .tag{font-family:var(--serif);font-style:normal;font-weight:500;color:var(--ink);font-size:1.05rem}
+.hours .addr{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--gold-soft);text-align:center;color:var(--soft);line-height:1.9}
+.hours .addr b{color:var(--ink);font-weight:600}
+@media (max-width:860px){.visit{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--gold);margin-top:clamp(2.6rem,6vh,4.5rem);padding:1.6rem var(--gut) 2.4rem;text-align:center;color:var(--soft)}
+footer .fleuron{color:var(--gold);font-size:1.2rem;margin-bottom:.6rem}
+footer .smallcaps{display:block;margin-top:.4rem}
+footer a{color:var(--soft)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+.gate{position:fixed;inset:0;z-index:1000;background:oklch(23% .02 40/.55);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:var(--gut)}
+.gate-in{max-width:480px;width:100%;background:var(--paper);border:1px solid var(--oxblood);padding:clamp(1.8rem,4vw,2.8rem);text-align:center;position:relative}
+.gate-in::before{content:"";position:absolute;inset:6px;border:1px solid var(--gold);pointer-events:none}
+.gate-in>*{position:relative;z-index:1}
+.gate-in .script{font-size:1.9rem}
+.gate-h{font-family:var(--serif);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:1.5rem;margin:.3rem 0 .7rem}
+.gate-in p{color:var(--soft);margin-bottom:1.3rem;font-size:.98rem}
+.gate-in .row{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
+
+@media (max-width:640px){.mast-top{flex-direction:column;gap:.2rem;align-items:center}}
+</style>
+</head>
+<body>
+<style>
+.card-form{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:flex-end;margin-top:1.4rem}
+.card-form input{font-family:var(--book);font-size:1.05rem;background:transparent;border:0;border-bottom:1px solid var(--gold);padding:.55rem .2rem;min-width:min(280px,70vw);color:var(--ink);outline:none;text-align:center}
+.card-form input::placeholder{color:var(--soft);font-style:italic}
+</style>
+
+<div class="ribbon">Draft mockup by <em>ap.haus</em> · concept B, the club treatment · not the live site</div>
+
+<header class="masthead">
+  <div class="mast-top">
+    <span class="smallcaps">South Side · Pittsburgh</span>
+    <span class="smallcaps"><a href="tel:+14124314277">(412) 431-4277</a></span>
+  </div>
+  <svg class="badge" viewBox="0 0 240 240" role="img" aria-label="Bloom Cigar Company, established 1955, South Side Pittsburgh" style="width:clamp(140px,17vw,190px)">
+    <circle cx="120" cy="120" r="116" class="thick"/>
+    <circle cx="120" cy="120" r="110"/>
+    <circle cx="120" cy="120" r="78"/>
+    <defs>
+      <path id="arcT" d="M 24 120 A 96 96 0 0 1 216 120"/>
+      <path id="arcB" d="M 32 120 A 88 88 0 0 0 208 120"/>
+    </defs>
+    <text class="arc"><textPath href="#arcT" startOffset="50%" text-anchor="middle">Bloom Cigar Company</textPath></text>
+    <text class="arcsm"><textPath href="#arcB" startOffset="50%" text-anchor="middle">South Side · Pittsburgh</textPath></text>
+    <rect x="115" y="55" width="10" height="10" transform="rotate(45 120 60)" class="dia"/>
+    <rect x="115" y="175" width="10" height="10" transform="rotate(45 120 180)" class="dia"/>
+    <text x="120" y="106" text-anchor="middle" class="est">Established</text>
+    <text x="120" y="146" text-anchor="middle" class="yr">1955</text>
+  </svg>
+  <div class="mast-name" style="font-size:clamp(2rem,1rem + 3.6vw,3.6rem)"><a href="../" style="color:inherit;text-decoration:none">Bloom Cigar Co.</a></div>
+  <nav class="mast-nav smallcaps">
+    <a href="../#shop">The Shop</a><span class="dia">◆</span>
+    <a href="../#guest">The Lounge</a><span class="dia">◆</span>
+    <a href="../#camp">Cigar Camp</a><span class="dia">◆</span>
+    <a href="../events/" style="color:var(--oxblood)">The Calendar</a><span class="dia">◆</span>
+    <a href="../first-visit/">First Visit</a><span class="dia">◆</span>
+    <a href="../#visit">Visit</a>
+  </nav>
+</header>
+
+<section style="margin-top:clamp(2rem,5vh,3.5rem)">
+  <div class="sect-head reveal">
+    <span class="script">What's on,</span>
+    <h2>The Social Calendar</h2>
+    <div class="rule">◆</div>
+  </div>
+  <div class="statement reveal">
+    <p class="lede">Not much at Bloom's happens by appointment, and one thing happens like clockwork. The house keeps its calendar here, so you never hear about the good Saturday after it happened.</p>
+  </div>
+</section>
+
+<div class="orn" aria-hidden="true"><span>❦</span></div>
+
+<section class="invite-wrap" id="camp">
+  <div class="invite reveal">
+    <span class="script">Every Saturday, from noon</span>
+    <h2>Cigar Camp&trade;</h2>
+    <p>The standing appointment of the house, kept weekly since the early 1990s. Food and entertainment on the house, camp-day prices you will not beat any other day, and on a good Saturday better than a hundred through the door. Regulars, first-timers, and whoever wandered in off Carson Street.</p>
+    <div class="terms">
+      <span>No sign-up</span><span class="dia">◆</span>
+      <span>No dues</span><span class="dia">◆</span>
+      <span>First-timers welcome</span>
+    </div>
+    <div class="rsvp">
+      <a class="btn primary" href="tel:+14124314277">Telephone the house</a>
+      <a class="btn" href="../#visit" style="margin-left:.6rem">The particulars</a>
+    </div>
+  </div>
+</section>
+
+<div class="orn" aria-hidden="true"><span>❦</span></div>
+
+<section id="occasions">
+  <div class="sect-head reveal">
+    <span class="script">In the book,</span>
+    <h2>House Occasions</h2>
+    <div class="rule">◆</div>
+  </div>
+  <div style="max-width:680px;margin:0 auto;padding-inline:var(--gut)">
+    <div class="menu reveal">
+      <h3>The Standing Engagements</h3>
+      <p class="note">dates post here the moment the house sets them</p>
+      <div class="menu-row"><span class="nm">Cigar Camp&trade;</span><span class="dots"></span><span class="tag">every Saturday, from noon</span></div>
+      <div class="menu-row"><span class="nm">New arrivals</span><span class="dots"></span><span class="tag">the moment orders land</span></div>
+      <div class="menu-row"><span class="nm">The Christmas sale</span><span class="dots"></span><span class="tag">two days each December</span></div>
+      <div class="menu-row"><span class="nm">The spring sale</span><span class="dots"></span><span class="tag">when winter breaks</span></div>
+      <p class="fine">Sample listings for this draft. The real book is kept by the shop, updated in seconds.</p>
+    </div>
+  </div>
+</section>
+
+<div class="orn" aria-hidden="true"><span>❦</span></div>
+
+<section id="card">
+  <div class="sect-head reveal">
+    <span class="script">Be the first to know,</span>
+    <h2>Leave Your Card</h2>
+    <div class="rule">◆</div>
+  </div>
+  <div class="statement reveal" style="max-width:620px">
+    <p class="lede">One note when something worth the trip is on. Nothing more, nothing sold, and never a stranger's hands on the list.</p>
+    <form class="card-form" onsubmit="return false">
+      <input type="email" placeholder="your email, if you please" aria-label="Your email">
+      <button class="btn primary" type="submit">Leave your card</button>
+    </form>
+    <p class="smallcaps" style="margin-top:1.6rem;color:var(--soft)">or follow the house · <a href="https://www.facebook.com/bloomcigar/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/bloomcigar/" target="_blank" rel="noopener">Instagram</a></p>
+  </div>
+</section>
+
+<div class="orn" aria-hidden="true"><span>❦</span></div>
+
+<section class="statement reveal">
+  <h1 style="font-size:clamp(1.8rem,1rem + 3vw,3.2rem)">This Saturday <em>works.</em></h1>
+  <p class="lede">54 S 12th Street, one block off East Carson. Street parking out front, and the neon is on.</p>
+  <div style="margin-top:1.6rem">
+    <a class="btn primary" href="tel:+14124314277">(412) 431-4277</a>
+    <a class="btn" href="https://maps.google.com/?q=Bloom+Cigar+Company+54+S+12th+St+Pittsburgh+PA" target="_blank" rel="noopener" style="margin-left:.6rem">Get directions</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fleuron">❦</div>
+  <span class="script" style="font-size:1.6rem">Bloom Cigar Company</span>
+  <span class="smallcaps">Est. 1955 · South Side · Pittsburgh, Pennsylvania</span>
+  <span class="smallcaps" style="margin-top:.8rem">21+ to purchase tobacco products · <a href="https://ap.haus" target="_blank" rel="noopener">draft mockup by ap.haus</a></span>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
