@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Your First Visit — Bloom Cigar Company — Pittsburgh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<style>
+:root{
+  --bg:oklch(96.6% 0.008 90);
+  --ink:oklch(24% 0.012 60);
+  --muted:oklch(42% 0.012 60);
+  --faint:oklch(58% 0.01 60);
+  --hair:oklch(84% 0.01 85);
+  --accent:oklch(50% 0.18 29); /* the red of the neon in their window */
+  --font-display:"Archivo","Helvetica Neue",sans-serif;
+  --font-body:"Instrument Sans",-apple-system,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --gut:clamp(1.2rem,3vw,2.75rem);
+  --step--1:clamp(.8rem,.78rem + .15vw,.9rem);
+  --step-0:clamp(.98rem,.94rem + .25vw,1.1rem);
+  --step-1:clamp(1.15rem,1.02rem + .7vw,1.5rem);
+  --step-2:clamp(1.5rem,1.2rem + 1.5vw,2.4rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");background-size:240px 240px;opacity:.16;mix-blend-mode:multiply}
+::selection{background:var(--ink);color:var(--bg)}
+img{max-width:100%;display:block}
+a{color:var(--ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.mono{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* checkerboard motif — the lounge floor since 1955 */
+.checker{height:14px;background:repeating-conic-gradient(var(--ink) 0% 25%,transparent 0% 50%);background-size:14px 14px;border-block:1px solid var(--ink)}
+
+/* draft ribbon */
+.ribbon{background:var(--ink);color:var(--bg);text-align:center;padding:.45rem var(--gut);font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase}
+.ribbon em{font-style:normal;color:oklch(78% .13 45)}
+
+/* ticker */
+.ticker{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--ink);font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:clamp(.95rem,.8rem + .8vw,1.4rem);letter-spacing:.01em;padding:.45rem 0}
+.ticker-track{display:inline-block;animation:tick 38s linear infinite}
+.ticker-track em{font-style:normal;color:var(--accent)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+/* nav */
+.nav{position:relative;z-index:60}
+.nav .wrap{display:grid;grid-template-columns:auto 1fr auto auto;gap:clamp(1.5rem,6vw,6rem);align-items:start;padding:1.1rem var(--gut) 1rem}
+.nav-brand{font-family:var(--font-display);font-weight:600;font-size:.95rem;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);text-decoration:none;line-height:1.4}
+.nav-col{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;line-height:1.75;color:var(--muted)}
+.nav-col span{display:block}
+.nav-col a{display:block;color:var(--muted);text-decoration:none}
+.nav-col a:hover{color:var(--accent)}
+.nav-cta{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink)!important;text-decoration:underline!important;text-underline-offset:4px;text-decoration-color:var(--accent)!important}
+
+/* hero billboard */
+.hero{position:relative;padding-top:clamp(1.2rem,3vh,2.5rem)}
+.hero-eyebrow{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:.4rem}
+.hero-eyebrow em{font-style:normal;color:var(--accent)}
+.billboard{font-family:var(--font-display);font-weight:600;text-transform:uppercase;font-size:clamp(4rem,19vw,19rem);line-height:.84;letter-spacing:-.015em;text-align:center;white-space:nowrap;position:relative;z-index:5;pointer-events:none;margin-bottom:-.145em}
+.hero-stage{position:relative;z-index:1;width:min(1100px,calc(100vw - 2*var(--gut)));margin-inline:auto}
+.hero-panel{border:1px solid var(--ink);overflow:hidden}
+.hero-panel img{width:100%;height:auto;display:block;filter:saturate(.92)}
+.hero-under{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;width:min(1100px,calc(100vw - 2*var(--gut)));margin:.6rem auto 0;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.hero-under b{color:var(--muted);font-weight:400}
+.hero-under a{color:var(--muted)}
+
+/* statement */
+.statement{position:relative;padding-block:clamp(4rem,11vh,8rem) clamp(3rem,8vh,6rem);overflow:hidden}
+.statement .wrap{position:relative;z-index:2;margin-inline:var(--gut)}
+.display{font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:clamp(2.4rem,.8rem + 6.4vw,6.4rem);line-height:.96;letter-spacing:-.012em;max-width:20ch}
+.display .dash{color:var(--accent)}
+.display mark{background:none;color:var(--accent)}
+.meta-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gut);margin-top:clamp(2.5rem,7vh,5rem);font-family:var(--font-mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;line-height:1.8;color:var(--muted)}
+.meta-cols b{color:var(--ink);font-weight:500}
+.meta-cols a{color:var(--ink)}
+.meta-cols .actions{display:flex;flex-direction:column;gap:.7rem;align-items:flex-start}
+@media (max-width:860px){.meta-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.meta-cols{grid-template-columns:1fr}}
+.linework{position:absolute;inset:0;pointer-events:none;z-index:1}
+.linework circle{fill:none;stroke:var(--hair);stroke-width:1}
+.centerline{position:absolute;top:0;bottom:0;left:50%;width:1px;background:var(--hair);pointer-events:none}
+
+.btn{display:inline-block;text-decoration:none;cursor:pointer;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;padding:.85rem 1.3rem;border:1px solid var(--ink);color:var(--ink);background:transparent;transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease)}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent)}
+
+/* spec section heads */
+section{position:relative}
+.spec{display:flex;align-items:baseline;gap:1.2rem;border-top:1px solid var(--ink);padding-top:.55rem;margin:0 var(--gut) clamp(2rem,5vw,3.5rem);font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase}
+.spec .no{color:var(--accent)}
+.spec .ti{color:var(--ink)}
+.spec .rt{margin-left:auto;color:var(--faint)}
+.spec .rt a{color:inherit;text-decoration:none}
+.spec .rt a:hover{color:var(--accent)}
+
+/* shop split (job pattern) */
+.job{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(1.6rem,4vw,4rem);margin-inline:var(--gut);padding-bottom:clamp(2.4rem,6vw,4rem);align-items:end}
+.job-shot{position:relative}
+.job-shot img{border:1px solid var(--ink);filter:saturate(.92)}
+.stamp{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+.stamp::before{content:"/";color:var(--accent)}
+.job-info h3{font-family:var(--font-display);font-weight:520;text-transform:uppercase;font-size:var(--step-2);letter-spacing:-.01em;line-height:1;margin-bottom:.5rem}
+.job-info .who{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
+.job-info p{color:var(--muted);margin-bottom:1rem;max-width:48ch}
+.job-info p strong{color:var(--ink);font-weight:600}
+.facts{list-style:none;margin:1.1rem 0 0;columns:2;column-gap:2.5rem;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.facts li{padding:.45rem 0 .45rem 1rem;border-top:1px solid var(--hair);position:relative;break-inside:avoid}
+.facts li::before{content:"/";position:absolute;left:.1rem;color:var(--accent)}
+@media (max-width:800px){.job{grid-template-columns:1fr;align-items:start}.facts{columns:2}}
+
+/* lounge band (Exo Ape) */
+.band{padding-block:clamp(2.5rem,7vh,5.5rem) 0}
+.band-shot{position:relative;overflow:hidden}
+.band-shot img{width:100%;height:clamp(340px,72vh,640px);object-fit:cover;object-position:center;filter:saturate(.92)}
+.band-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,oklch(20% .012 60/.62))}
+.band-title{position:absolute;z-index:3;left:var(--gut);right:var(--gut);bottom:-.07em;margin:0;font-family:var(--font-display);font-weight:560;font-size:clamp(3rem,1rem + 9vw,9rem);line-height:.85;letter-spacing:-.02em;color:oklch(97.5% .004 90)}
+.band-below{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem 3rem;margin:1.1rem var(--gut) 0;align-items:baseline}
+.band-desc{color:var(--muted);font-size:var(--step--1);max-width:52ch;line-height:1.6}
+.band-desc .mono{display:block;margin-bottom:.35rem;color:var(--faint)}
+.band-meta{display:flex;flex-direction:column;gap:.5rem;align-items:flex-end;text-align:right;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:640px){.band-shot img{height:300px}.band-below{grid-template-columns:1fr}.band-meta{align-items:flex-start;text-align:left}}
+
+/* review ledger */
+.ledger{margin:clamp(2rem,5vw,3.5rem) var(--gut) 0}
+.ledger-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 2.5rem;padding:clamp(1.2rem,3vw,1.8rem) 0;border-bottom:1px solid var(--hair)}
+.ledger-row:first-child{border-top:1px solid var(--ink)}
+.ledger-row q{font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:var(--step-1);letter-spacing:-.005em;line-height:1.2;quotes:none;max-width:40ch}
+.ledger-row .src{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);white-space:nowrap;align-self:end}
+@media (max-width:640px){.ledger-row{grid-template-columns:1fr}}
+
+/* camp statement band */
+.change-order{border-block:1px solid var(--ink);padding-block:clamp(3rem,9vh,6rem);position:relative;overflow:hidden;margin-top:clamp(2.5rem,7vh,5.5rem)}
+.change-order .inner{margin-inline:var(--gut);position:relative;z-index:2}
+.change-order h2{font-family:var(--font-display);font-weight:500;text-transform:uppercase;font-size:clamp(2rem,.8rem + 5vw,5rem);line-height:.96;letter-spacing:-.012em;max-width:22ch;margin-bottom:1.4rem}
+.change-order h2 .dash{color:var(--accent)}
+.change-order p{color:var(--muted);max-width:52ch}
+.change-order .fine{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:1.1rem 0 1.6rem}
+
+/* hours rate sheet */
+.est{margin-inline:var(--gut);border-top:1px solid var(--ink)}
+.est-head{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:.55rem;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.est-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 2.5rem;padding:clamp(1.3rem,3.2vw,2rem) 0;border-bottom:1px solid var(--hair)}
+.est-row .item h3{font-family:var(--font-display);font-weight:520;text-transform:uppercase;font-size:var(--step-2);letter-spacing:-.01em;line-height:1;margin-bottom:.4rem}
+.est-row .item p{color:var(--muted);font-size:var(--step--1);max-width:54ch}
+.est-row .amt{text-align:right;white-space:nowrap}
+.est-row .amt .n{font-family:var(--font-display);font-weight:520;font-size:var(--step-2);letter-spacing:-.01em}
+.est-row .amt .u{display:block;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.12em;color:var(--faint);margin-top:.4rem;text-transform:uppercase}
+@media (max-width:620px){.est-row{grid-template-columns:1fr}.est-row .amt{text-align:left}}
+.visit-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(1.6rem,4vw,4rem);margin:clamp(2rem,5vw,3rem) var(--gut) 0;align-items:start}
+.visit-grid img{border:1px solid var(--ink);filter:saturate(.92)}
+@media (max-width:800px){.visit-grid{grid-template-columns:1fr}}
+
+/* footer */
+footer{border-top:1px solid var(--ink);padding:1.6rem var(--gut) 2.4rem;margin-top:clamp(2rem,6vh,4rem)}
+.foot{display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;align-items:baseline;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.foot .brand{color:var(--ink)}
+.foot a{color:var(--faint);text-decoration:none}
+.foot a:hover{color:var(--accent)}
+
+/* reveals */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* age gate */
+.gate{position:fixed;inset:0;z-index:1000;background:oklch(96.6% 0.008 90 / .97);display:flex;align-items:center;justify-content:center;padding:var(--gut)}
+.gate-in{max-width:460px;width:100%;background:var(--bg);border:1px solid var(--ink);padding:clamp(1.8rem,4vw,3rem);text-align:left}
+.gate-in .mono{color:var(--muted);display:block;margin-bottom:1rem}
+.gate-in .mono em{font-style:normal;color:var(--accent)}
+.gate-h{font-family:var(--font-display);font-weight:560;text-transform:uppercase;font-size:clamp(1.8rem,4vw,2.6rem);line-height:.95;letter-spacing:-.012em;margin-bottom:.9rem}
+.gate-in p{color:var(--muted);font-size:var(--step--1);margin-bottom:1.4rem}
+.gate-in .row{display:flex;gap:.7rem;flex-wrap:wrap}
+
+@media (max-width:720px){
+.nav .wrap{grid-template-columns:1fr auto}
+.nav-col{display:none}
+.billboard{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon">Draft mockup by <em>ap.haus</em> · not the live site · photos and copy swappable</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="../" class="nav-brand">Bloom Cigar Co.</a>
+    <div class="nav-col">
+      <span>Tobacconist</span>
+      <span>South Side, PGH</span>
+    </div>
+    <div class="nav-col">
+      <a href="../#shop">The Shop</a>
+      <a href="../#lounge">The Lounge</a>
+      <a href="../cigar-camp/">Cigar Camp</a>
+      <a href="../events/">Events</a>
+      <a href="../first-visit/" aria-current="page">First Visit</a>
+      <a href="../#visit">Visit</a>
+    </div>
+    <a href="tel:+14124314277" class="nav-cta">(412) 431-4277</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="hero-eyebrow">Everyone here was new once — <em>including the regulars</em></p>
+  <div class="billboard" aria-hidden="true" style="font-size:clamp(2.6rem,12vw,12rem)">FIRST VISIT</div>
+  <div class="hero-stage">
+    <div class="hero-panel">
+      <img src="/assets/teasers/bloom-humidor.jpg" alt="The wall of cigars at Bloom's, floor to ceiling" width="1100" height="840" style="width:100%;height:clamp(320px,58vh,560px);object-fit:cover">
+    </div>
+  </div>
+  <p class="hero-under"><span><b>The wall</b> — thousands deep. Don't sweat it.</span><span>How it works ↓</span></p>
+</header>
+
+<section class="statement">
+  <svg class="linework" width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <circle cx="1180" cy="980" r="620"/>
+    <circle cx="180" cy="-120" r="540"/>
+  </svg>
+  <div class="centerline" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1 class="display"><span class="dash">—</span> Never bought a cigar? <mark>That's the easy part.</mark></h1>
+    <div class="meta-cols">
+      <div><b>What to know</b><br>Nothing. Walking in<br>is the whole job.</div>
+      <div><b>What to spend</b><br>Thousands of shapes and<br>sizes. There is a gem<br>at every price.</div>
+      <div><b>54 S 12th St</b><br>South Side<br>Pittsburgh, PA 15203</div>
+      <div class="actions">
+        <a class="btn primary" href="tel:+14124314277">Call the shop</a>
+        <a class="btn" href="https://maps.google.com/?q=Bloom+Cigar+Company+54+S+12th+St+Pittsburgh+PA" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="checker" aria-hidden="true"></div>
+
+<section id="how" style="padding-top:clamp(2.5rem,7vh,5.5rem)">
+  <p class="spec"><span class="no">01/03</span> <span class="ti">How a first visit goes</span> <span class="rt">Ten minutes, start to lit</span></p>
+  <div class="est reveal">
+    <div class="est-head"><span>Field guide</span><span>No membership · No dress code</span></div>
+    <div class="est-row">
+      <div class="item"><h3>Walk in</h3><p>Say it is your first time. That is the last hard part. Nobody quizzes you here.</p></div>
+      <div class="amt"><span class="mono" style="color:var(--accent);letter-spacing:.12em">/ Step 01</span></div>
+    </div>
+    <div class="est-row">
+      <div class="item"><h3>Talk to Mark</h3><p>Tell him what you drink, what you have tried, how long you want it to last. He pulls the right one off a wall of thousands.</p></div>
+      <div class="amt"><span class="mono" style="color:var(--accent);letter-spacing:.12em">/ Step 02</span></div>
+    </div>
+    <div class="est-row">
+      <div class="item"><h3>Get it lit right</h3><p>A proper cut and a proper light, shown to you, not done at you. You will have it for life.</p></div>
+      <div class="amt"><span class="mono" style="color:var(--accent);letter-spacing:.12em">/ Step 03</span></div>
+    </div>
+    <div class="est-row">
+      <div class="item"><h3>Take a chair</h3><p>Leather chairs, the checkerboard floor, half a century of Pittsburgh on the walls. Stay as long as you like.</p></div>
+      <div class="amt"><span class="mono" style="color:var(--accent);letter-spacing:.12em">/ Step 04</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="know">
+  <p class="spec"><span class="no">02/03</span> <span class="ti">Good to know</span> <span class="rt">House basics</span></p>
+  <div class="job reveal" style="grid-template-columns:1fr;align-items:start">
+    <div class="job-info">
+      <ul class="facts" style="max-width:900px">
+        <li>21 or older, state law</li>
+        <li>You can just look</li>
+        <li>Cards + Apple Pay accepted</li>
+        <li>Street parking out front</li>
+        <li>A bad stick comes back</li>
+        <li>Saturdays are Cigar Camp&trade;</li>
+      </ul>
+      <p class="mono" style="margin-top:1.2rem;color:var(--faint)">If it is your first time, a Saturday is the best and busiest introduction — <a href="../events/" style="color:inherit">see the calendar</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="neon">
+  <p class="spec"><span class="no">03/03</span> <span class="ti">Finding the place</span> <span class="rt"><a href="https://maps.google.com/?q=Bloom+Cigar+Company+54+S+12th+St+Pittsburgh+PA" target="_blank" rel="noopener">Get directions ↗</a></span></p>
+  <div class="band reveal" style="padding-top:0">
+    <div class="band-shot">
+      <img src="/assets/teasers/bloom-storefront.jpg" alt="Bloom Cigar Company storefront, neon in the window" width="1280" height="800" loading="lazy" style="height:clamp(300px,56vh,520px)">
+      <h2 class="band-title">The Neon</h2>
+    </div>
+    <div class="band-below">
+      <p class="band-desc"><span class="mono">54 S 12th St · one block off East Carson</span>Look for the neon in the window. It has been on since 1955 and it is not going anywhere.</p>
+      <p class="band-meta"><span>/ Mon–Fri 12–6 · Sat 12–4</span><span>/ Sun closed</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="change-order reveal">
+  <div class="inner">
+    <h2><span class="dash">—</span> Your first one should be a good one.</h2>
+    <p>Come in and say it is your first. The rest takes care of itself.</p>
+    <p class="fine">Mon–Fri 12–6 · Sat 12–4 · Sun closed</p>
+    <a class="btn primary" href="tel:+14124314277">(412) 431-4277</a>
+    <a class="btn" href="../events/">What's on this week</a>
+  </div>
+</section>
+
+<div class="checker" aria-hidden="true"></div>
+
+<footer>
+  <div class="foot">
+    <span class="brand">Bloom Cigar Company</span>
+    <span>Est. 1955 · South Side · Pittsburgh, PA</span>
+    <span>21+ to purchase tobacco products</span>
+    <span><a href="https://ap.haus" target="_blank" rel="noopener">Draft mockup by ap.haus</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
