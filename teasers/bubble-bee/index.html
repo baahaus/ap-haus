@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bubble Bee × ap.haus — a preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&family=Silkscreen:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:oklch(96.6% .008 90); --ink:oklch(24% .012 60); --muted:oklch(42% .012 60);
+  --faint:oklch(58% .01 60); --hair:oklch(84% .01 85); --accent:oklch(68% 0.14 85);
+  --gut:clamp(1.2rem,3vw,2.75rem); --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.grain{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.16;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.ticker{border-bottom:1px solid var(--ink);overflow:hidden;white-space:nowrap;padding:.45rem 0;background:var(--bg)}
+.ticker-track{display:inline-block;animation:tick 38s linear infinite;font-family:"Archivo",sans-serif;font-weight:600;text-transform:uppercase;font-size:.68rem;letter-spacing:.06em}
+.ticker-track em{color:var(--accent);font-style:normal;padding:0 1.1rem}
+.ticker-track span{color:var(--ink)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+nav{display:grid;grid-template-columns:1fr auto auto auto;gap:var(--gut);align-items:start;padding:1rem var(--gut);border-bottom:1px solid var(--hair)}
+.brand{font-family:"Silkscreen",monospace;font-size:.95rem;letter-spacing:.02em;color:var(--ink);text-decoration:none}
+.ncol{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+.ncol b{display:block;color:var(--ink);font-weight:500}
+.hero{position:relative;padding:clamp(2.2rem,6vh,4.5rem) var(--gut) 0}
+.hero .circles{position:absolute;top:-4rem;right:-6rem;width:30rem;height:30rem;pointer-events:none}
+.hero .circles circle{fill:none;stroke:var(--hair);stroke-width:1}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
+.billboard{-webkit-text-stroke:1.5px var(--bg);paint-order:stroke fill;font-family:"Archivo",sans-serif;font-weight:600;text-transform:uppercase;line-height:.86;letter-spacing:-.018em;font-size:clamp(3.6rem,15vw,13rem);margin-bottom:-.13em;position:relative;z-index:2;word-break:keep-all}
+.photo-panel{position:relative;border:1px solid var(--ink);margin:0 var(--gut);overflow:hidden}
+.photo-panel img{display:block;width:100%;height:clamp(20rem,55vh,34rem);object-fit:cover;object-position:center 30%}
+.photo-cap{display:flex;justify-content:space-between;gap:1rem;padding:.55rem var(--gut) 0;margin:0 var(--gut)}
+.statement{padding:clamp(3rem,9vh,6.5rem) var(--gut) clamp(2rem,6vh,4rem);position:relative}
+.statement:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--hair)}
+.statement h2{font-family:"Archivo",sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(1.5rem,3.6vw,2.7rem);line-height:1.04;letter-spacing:-.012em;max-width:24ch;position:relative;z-index:1}
+.statement h2 mark{background:none;color:var(--accent)}
+.meta-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut);margin-top:clamp(2rem,5vh,3.5rem);position:relative;z-index:1}
+.mcol{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink);line-height:1.8;border-top:1px solid var(--ink);padding-top:.6rem}
+.mlabel{display:block;color:var(--accent);margin-bottom:.35rem}
+section{padding:clamp(2.5rem,8vh,6rem) var(--gut)}
+.spec{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;border-bottom:1px solid var(--ink);padding-bottom:.55rem;margin-bottom:clamp(1.6rem,4vh,2.6rem)}
+.spec .num{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.12em;color:var(--accent)}
+.spec h3{font-family:"Archivo",sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(1.05rem,2vw,1.5rem);letter-spacing:-.01em;flex:1}
+.spec .mono{text-align:right}
+ul.slash{list-style:none;max-width:62ch}
+ul.slash li{padding:.7rem 0 .7rem 1.6rem;position:relative;border-bottom:1px solid var(--hair);color:var(--muted);font-size:.98rem}
+ul.slash li:before{content:"/";position:absolute;left:.2rem;color:var(--accent);font-family:"IBM Plex Mono",monospace}
+ul.slash li b{color:var(--ink);font-weight:500}
+.row{display:grid;grid-template-columns:minmax(12rem,18rem) 1fr;gap:var(--gut);padding:1.1rem 0;border-bottom:1px solid var(--hair)}
+.row-title{font-family:"Archivo",sans-serif;font-weight:600;text-transform:uppercase;font-size:1rem;letter-spacing:-.005em}
+.row-desc{color:var(--muted);font-size:.95rem;max-width:58ch}
+.band{margin:clamp(2rem,6vh,4rem) 0 0}
+.band img{display:block;width:100%;height:clamp(14rem,42vh,26rem);object-fit:cover;border:1px solid var(--ink)}
+.band figcaption{padding-top:.5rem}
+.rate{border-top:1px solid var(--ink)}
+.rate-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.15rem 0;border-bottom:1px solid var(--hair)}
+.rate-row .item{font-family:"Archivo",sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(1rem,2.2vw,1.5rem);letter-spacing:-.01em}
+.rate-row .fig{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.06em;color:var(--ink);white-space:nowrap}
+.rate-row .fig b{color:var(--accent);font-weight:500}
+.cta{margin-top:clamp(2rem,5vh,3rem);max-width:56ch}
+.cta p{color:var(--muted);margin-bottom:1.2rem}
+.cta a.mail{font-family:"IBM Plex Mono",monospace;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;border:1px solid var(--ink);padding:.75rem 1.4rem;display:inline-block;transition:background .25s var(--ease),color .25s var(--ease)}
+.cta a.mail:hover{background:var(--ink);color:var(--bg)}
+footer{border-top:1px solid var(--ink);padding:1.2rem var(--gut) 2.4rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+@media(max-width:760px){
+  nav{grid-template-columns:1fr 1fr}
+  .meta-cols{grid-template-columns:1fr 1fr}
+  .row{grid-template-columns:1fr}
+  .hero .circles{display:none}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Fresh bubble tea &amp; mochi donuts daily</span><em>/</em><span>Shadyside / Washington PA / Yonkers NY</span><em>/</em><span>Open 9 to 9, seven days</span><em>/</em><span>Brown sugar boba, basque cheesecake, taro everything</span><em>/</em><span>Fresh bubble tea &amp; mochi donuts daily</span><em>/</em><span>Shadyside / Washington PA / Yonkers NY</span><em>/</em><span>Open 9 to 9, seven days</span><em>/</em><span>Brown sugar boba, basque cheesecake, taro everything</span><em>/</em></div></div>
+<nav>
+  <a class="brand" href="https://ap.haus">ap.haus</a>
+  <div class="ncol"><b>Prepared for</b>Bubble Bee</div>
+  <div class="ncol"><b>Kind</b>Homepage direction<br>Private preview</div>
+  <div class="ncol"><b>Contact</b><a href="mailto:cam@ap.haus" style="color:inherit;text-decoration:none">cam@ap.haus</a></div>
+</nav>
+<header class="hero">
+  <svg class="circles" viewBox="0 0 480 480" aria-hidden="true"><circle cx="240" cy="240" r="238"/><circle cx="240" cy="240" r="170"/><circle cx="330" cy="150" r="90"/></svg>
+  <p class="eyebrow">Now previewing — a rebuild direction, not the live site</p>
+  <h1 class="billboard">BUBBLE<br>BEE</h1>
+</header>
+<div class="photo-panel"><img src="hero.jpg" alt="Bubble Bee storefront on Centre Ave with the bee mascot sign"></div>
+<div class="photo-cap"><span class="mono">The Centre Ave storefront. The bee already does the branding.</span><span class="mono">4815 Centre Ave, Pittsburgh</span></div>
+<section class="statement">
+  <h2 class="reveal">&mdash; Three shops, a mascot people photograph, and a website that introduces itself as <mark>&ldquo;Bubble bee New.&rdquo;</mark></h2>
+  <div class="meta-cols reveal"><div class="mcol"><span class="mlabel">Locations</span>Shadyside PA<br>Washington PA<br>Yonkers NY</div><div class="mcol"><span class="mlabel">Hours</span>Open daily<br>9 AM &ndash; 9 PM<br>Order at counter or kiosk</div><div class="mcol"><span class="mlabel">Site today</span>Tab: &ldquo;HOME | Bubble bee New&rdquo;<br>No description<br>No preview image</div><div class="mcol"><span class="mlabel">The fix</span>$1,500 flat<br>About two weeks<br>Everything below</div></div>
+</section>
+<section>
+  <div class="spec"><span class="num">01/03</span><h3>What's true right now</h3><span class="mono">Verified in a browser, July 14, 2026</span></div>
+  <ul class="slash reveal"><li><b>The browser tab reads &ldquo;HOME | Bubble bee New.&rdquo;</b> That is the website builder&rsquo;s internal project name, showing to every visitor and to Google.</li><li><b>No meta description and no preview image.</b> Shared links show up bare in texts and group chats, where boba decisions actually happen.</li><li><b>The menu is scattered.</b> Grubhub, Toast, Seamless and the site each tell a different story. No single page owns &ldquo;bubble tea near me.&rdquo;</li><li><b>Real drinks, stand-in photos.</b> The current page leans on generated images while the actual drinks and donuts photograph beautifully.</li></ul>
+</section>
+<section>
+  <div class="spec"><span class="num">02/03</span><h3>The direction</h3><span class="mono">Same shop. Told properly.</span></div>
+  <div class="row reveal"><div class="row-title">A name that reads right</div><div class="row-desc">Title, search result and share card say Bubble Bee, bubble tea and mochi donuts, Pittsburgh. The builder filename never shows again.</div></div><div class="row reveal"><div class="row-title">The real product, shot for real</div><div class="row-desc">Brown sugar boba, the donut case, the bee sign. Their own photography leads every section.</div></div><div class="row reveal"><div class="row-title">One menu, three shops</div><div class="row-desc">A single menu page with per-location hours and the right ordering link for each shop, so search traffic lands somewhere that converts.</div></div><div class="row reveal"><div class="row-title">Built to be shared</div><div class="row-desc">Proper preview cards so every link dropped in a group chat arrives with a picture of the drink.</div></div>
+  
+  <figure class="band reveal">
+    <img src="band.png" alt="Tray of assorted mochi donuts at Bubble Bee Shadyside" loading="lazy">
+    <figcaption class="mono">The mochi donut case, as covered by PennsylvAsia.</figcaption>
+  </figure>
+</section>
+<section>
+  <div class="spec"><span class="num">03/03</span><h3>The build</h3><span class="mono">Flat. No surprises.</span></div>
+  <div class="rate reveal">
+    <div class="rate-row"><span class="item">Full site rebuild</span><span class="fig"><b>$1,500</b> flat</span></div>
+    <div class="rate-row"><span class="item">Timeline</span><span class="fig">about two weeks</span></div>
+    <div class="rate-row"><span class="item">Care plan, optional</span><span class="fig">from <b>$150</b>/mo after launch</span></div>
+  </div>
+  <div class="cta reveal">
+    <p>If this direction feels right, reply and it goes from preview to live in about two weeks. If not, no hard feelings.</p>
+    <a class="mail" href="mailto:cam@ap.haus?subject=Bubble%20Bee%20site">Write to cam@ap.haus</a>
+  </div>
+</section>
+<footer>
+  <span class="mono">A preview by ap.haus — web work from Pittsburgh</span>
+  <span class="mono">Not the live site. Unlisted, not indexed.</span>
+</footer>
+<script>
+document.documentElement.classList.add('js');
+try{
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}catch(e){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'))}
+</script>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</body>
+</html>
