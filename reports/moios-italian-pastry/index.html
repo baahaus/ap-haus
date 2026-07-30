@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Moio's Italian Pastry / Search Visibility Report / ap.haus</title>
+<meta name="description" content="A plain-language search and site audit of moios.com, prepared by ap.haus.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f2e9; --paper:#efe8db; --ink:#241f1a; --muted:#5c534a; --faint:#8c8175;
+  --hair:#d5cbb9; --accent:#B3272D;
+  --gut:clamp(1.2rem,3.4vw,3rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+.grain{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.16;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.top{border-bottom:1px solid var(--ink);position:sticky;top:0;background:var(--bg);z-index:50}
+.topin{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem 0;flex-wrap:wrap}
+.brand{font-family:"Archivo";font-weight:700;letter-spacing:-.02em;font-size:.95rem;text-transform:lowercase}
+.brand em{font-style:normal;color:var(--accent)}
+.hero{padding:clamp(2.6rem,8vh,5.5rem) 0 0}
+.eyebrow{display:flex;align-items:center;gap:.6rem}
+.eyebrow .dot{width:7px;height:7px;background:var(--accent);border-radius:50%}
+h1.bill{font-family:"Archivo";font-weight:600;text-transform:uppercase;line-height:.86;letter-spacing:-.025em;
+  font-size:clamp(2.1rem,6vw,4.4rem);margin:.7rem 0 .6rem;max-width:20ch}
+.sub{font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:56ch;color:var(--muted);line-height:1.45}
+.metacols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--hair);
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:clamp(1.8rem,5vh,3rem) 0 0}
+.mc{background:var(--bg);padding:.9rem 0 1rem;padding-right:1rem}
+.mc .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.mc .v{font-family:"Archivo";font-weight:500;font-size:.92rem;margin-top:.25rem;letter-spacing:-.01em}
+.score{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(1.5rem,5vw,4rem);
+  align-items:start;padding:clamp(2.2rem,6vh,4rem) 0;border-bottom:1px solid var(--ink)}
+.bignum{font-family:"Archivo";font-weight:600;font-size:clamp(5rem,17vw,11rem);line-height:.8;letter-spacing:-.04em}
+.bignum small{font-size:.22em;color:var(--faint);letter-spacing:0}
+.barrow{display:grid;grid-template-columns:minmax(120px,1.1fr) minmax(0,2.4fr) 34px;gap:.9rem;align-items:center;padding:.55rem 0;border-bottom:1px solid var(--hair)}
+.barrow:last-child{border-bottom:0}
+.bl{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.btrack{height:6px;background:var(--paper);border:1px solid var(--hair);position:relative;display:block}
+.bfill{position:absolute;left:0;top:0;bottom:0;background:var(--accent)}
+.bv{font-family:"Archivo";font-weight:600;font-size:.85rem;text-align:right}
+.sec{padding:clamp(2.4rem,7vh,4.4rem) 0 0}
+.spec{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.spec .ct{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;color:var(--accent)}
+.spec h2{font-family:"Archivo";font-weight:600;text-transform:uppercase;letter-spacing:-.015em;
+  font-size:clamp(1.25rem,3.4vw,2.1rem);line-height:1;flex:1}
+.spec .rt{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.rule{height:1px;background:var(--ink);margin:.85rem 0 1.6rem}
+.find{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.2rem,4vw,3rem)}
+.lab{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}
+.bd{font-size:1rem;line-height:1.6;color:var(--muted);max-width:52ch}
+.bd strong{color:var(--ink);font-weight:600}
+.ev{border:1px solid var(--ink);background:var(--paper);padding:1rem 1.1rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.76rem;line-height:1.65;word-break:break-word}
+.ev .tag{display:block;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}
+.ev b{color:var(--accent);font-weight:500}
+.ev .strike{text-decoration:line-through;color:var(--faint)}
+.serp{border:1px solid var(--ink);background:#fff;padding:1.2rem 1.3rem;margin-top:.8rem;font-family:Arial,Helvetica,sans-serif}
+.serp .u{font-size:.78rem;color:#4d5156}
+.serp .t{font-size:1.15rem;color:#1a0dab;line-height:1.3;margin:.15rem 0 .25rem}
+.serp .d{font-size:.85rem;color:#4d5156;line-height:1.45}
+.serp .d .cut{color:#b9b2a7}
+.serpwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:.4rem}
+.prio{list-style:none;margin-top:.4rem}
+.prio li{display:flex;gap:.8rem;padding:.95rem 0;border-bottom:1px solid var(--hair);font-size:1.02rem;line-height:1.5}
+.prio li:before{content:"/";color:var(--accent);font-family:"IBM Plex Mono",monospace;font-weight:500;flex:none}
+.prio li b{font-weight:600}
+.offer{margin:clamp(3rem,9vh,6rem) 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:clamp(2.2rem,6vh,4rem) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.4rem,4vw,3rem)}
+.offer h3{font-family:"Archivo";font-weight:600;text-transform:uppercase;font-size:clamp(1.6rem,4.6vw,2.8rem);
+  line-height:.95;letter-spacing:-.02em;max-width:12ch}
+.offer h3 mark{background:none;color:var(--accent)}
+.rate{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--hair)}
+.rate .n{font-family:"Archivo";font-weight:500;text-transform:uppercase;letter-spacing:-.01em;font-size:1rem}
+.rate .p{font-family:"Archivo";font-weight:600;font-size:1.05rem}
+footer{padding:2rem 0 3.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:760px){ .find{grid-template-columns:1fr} .score{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} }
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="grain"></div>
+
+<div class="top"><div class="wrap topin">
+  <span class="brand">ap<em>.</em>haus</span>
+  <span class="mono">Search visibility report / 07.30.26</span>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span><span class="mono">Prepared for Moio's Italian Pastry</span></div>
+  <h1 class="bill">Your title tag sends people to Cranberry Township</h1>
+  <p class="sub">The blue headline Google prints for moios.com names a town 30 miles from the shop and never says Monroeville. Your share image tag is set to the word home. Here is the full check.</p>
+  <div class="metacols">
+    <div class="mc"><div class="k">Site reviewed</div><div class="v">moios.com</div></div>
+    <div class="mc"><div class="k">Date</div><div class="v">07.30.26</div></div>
+    <div class="mc"><div class="k">Built on</div><div class="v">Hibu</div></div>
+    <div class="mc"><div class="k">Reviewed by</div><div class="v">Cam / ap.haus</div></div>
+  </div>
+</div></header>
+
+<div class="wrap"><div class="score">
+  <div>
+    <p class="mono" style="margin-bottom:.9rem">Overall search readiness</p>
+    <div class="bignum">58<small>/100</small></div>
+    <p class="bd" style="margin-top:1.1rem;max-width:34ch">Ninety years in and the site is mostly solid. The two tags that decide who clicks are pointed at the wrong town.</p>
+  </div>
+  <div>
+    <p class="mono" style="margin-bottom:.6rem">Category breakdown</p>
+
+    <div class="barrow">
+      <span class="bl">Search snippet</span>
+      <span class="btrack"><span class="bfill" style="width:30%"></span></span>
+      <span class="bv">30</span>
+    </div>
+    <div class="barrow">
+      <span class="bl">Link previews</span>
+      <span class="btrack"><span class="bfill" style="width:10%"></span></span>
+      <span class="bv">10</span>
+    </div>
+    <div class="barrow">
+      <span class="bl">Page structure</span>
+      <span class="btrack"><span class="bfill" style="width:80%"></span></span>
+      <span class="bv">80</span>
+    </div>
+    <div class="barrow">
+      <span class="bl">Image alt text</span>
+      <span class="btrack"><span class="bfill" style="width:70%"></span></span>
+      <span class="bv">70</span>
+    </div>
+    <div class="barrow">
+      <span class="bl">Local signals</span>
+      <span class="btrack"><span class="bfill" style="width:65%"></span></span>
+      <span class="bv">65</span>
+    </div>
+    <div class="barrow">
+      <span class="bl">Technical setup</span>
+      <span class="btrack"><span class="bfill" style="width:85%"></span></span>
+      <span class="bv">85</span>
+    </div>
+  </div>
+</div></div>
+
+<main class="wrap">
+
+  <section class="sec reveal">
+    <div class="spec"><span class="ct">01/05</span><h2>The title names Cranberry Township, not Monroeville</h2><span class="rt">Meta title</span></div>
+    <div class="rule"></div>
+    <div class="find">
+      <div class="fl">
+        <p class="lab">What we found</p>
+        <div class="ev"><span class="tag">Live on moios.com / title tag</span>&lt;title&gt;<br>"Italian Pastries <b>Cranberry Township, PA</b> | Pittsburgh, PA"<br><br>Contains "Monroeville": <b>no</b><br>Your own page text: "Located in <b>Monroeville, PA</b>"<br>Your address: 4209 William Penn Hwy, Monroeville</div>
+      </div>
+      <div class="fr">
+        <p class="lab">Why it matters</p>
+        <p class="bd">That title is the blue line in every Google result and the name of the browser tab. It currently advertises Cranberry Township, which is about 30 miles north of your counter, and never mentions the town you have actually been in since 1972. Anyone searching Italian bakery Monroeville is being handed a result that says Cranberry.</p>
+        <p class="lab" style="margin-top:1.4rem">The fix</p>
+        <p class="bd">Rewrite it to something like Moio's Italian Pastry Shop | Monroeville, PA | Cakes and Cannoli Since 1935. Same length, correct town, and it names what you sell.</p>
+      </div>
+    </div>
+  </section>
+  <section class="sec reveal">
+    <div class="spec"><span class="ct">02/05</span><h2>What that looks like in a search result</h2><span class="rt">Side by side</span></div>
+    <div class="rule"></div>
+    <div class="serpwrap"><div><p class="lab">What people see today</p><div class="serp"><div class="u">https://www.moios.com</div><div class="t">Italian Pastries Cranberry Township, PA | Pittsburgh, PA</div><div class="d">Enjoy Italian pastries Pittsburgh, PA residents love at Moio's Italian Pastry Shop. Stop by today to learn more about our irresistible treats!</div></div></div><div><p class="lab">What it should say</p><div class="serp"><div class="u">https://www.moios.com</div><div class="t">Moio's Italian Pastry Shop | Monroeville, PA | Since 1935</div><div class="d">Four generations of Italian cakes, cannoli and cookies on William Penn Highway in Monroeville. Wedding and specialty cakes to order.</div></div></div></div>
+  </section>
+  <section class="sec reveal">
+    <div class="spec"><span class="ct">03/05</span><h2>Your share image tag is set to the word home</h2><span class="rt">Link previews</span></div>
+    <div class="rule"></div>
+    <div class="find">
+      <div class="fl">
+        <p class="lab">What we found</p>
+        <div class="ev"><span class="tag">Live on moios.com / open graph tags</span>og:image = <b>"home"</b><br><span class="strike">https://www.moios.com/images/...</span><br><br>Valid image URL: <b>no</b><br>twitter:card = summary (small thumbnail)</div>
+      </div>
+      <div class="fr">
+        <p class="lab">Why it matters</p>
+        <p class="bd">An open graph image tag has to hold a full URL to a picture. Yours holds the word home, so there is nothing for Facebook or a text message to load. Every time someone shares a link to your cake gallery, it renders blank. A bakery is the most photogenic business on the internet and your links show nothing.</p>
+        <p class="lab" style="margin-top:1.4rem">The fix</p>
+        <p class="bd">Point og:image at a real photo of the case, and switch twitter:card to summary_large_image so the preview renders wide instead of as a stamp.</p>
+      </div>
+    </div>
+  </section>
+  <section class="sec reveal">
+    <div class="spec"><span class="ct">04/05</span><h2>The same business is declared four separate times</h2><span class="rt">Structured data</span></div>
+    <div class="rule"></div>
+    <div class="find">
+      <div class="fl">
+        <p class="lab">What we found</p>
+        <div class="ev"><span class="tag">Live on moios.com / JSON-LD blocks</span>LocalBusiness blocks: <b>4</b><br>WebSite: 1<br>FAQPage: 1<br><br>Duplicate LocalBusiness entries: <b>yes</b></div>
+      </div>
+      <div class="fr">
+        <p class="lab">Why it matters</p>
+        <p class="bd">Structured data is good, and you have it, which already puts you ahead. But the shop is declared as a LocalBusiness four times on one page. Google has to pick one and guess, and duplicate blocks can suppress the rich result you are supposed to be earning from having the markup in the first place.</p>
+        <p class="lab" style="margin-top:1.4rem">The fix</p>
+        <p class="bd">Collapse to one Bakery block with the Monroeville address, hours, phone and price range. Keep the FAQ markup, it is doing real work.</p>
+      </div>
+    </div>
+  </section>
+
+<section class="sec reveal">
+  <div class="spec"><span class="ct">05/05</span><h2>What we would fix first</h2><span class="rt">Priority order</span></div>
+  <div class="rule"></div>
+  <ul class="prio"><li><span><b>Fix the title tag first.</b> It currently sends Monroeville customers to Cranberry Township.</span></li><li><span><b>Put a real photo URL in og:image.</b> Right now the tag contains the word home.</span></li><li><span><b>Collapse the four duplicate LocalBusiness blocks into one.</b> </span></li><li><span><b>Add alt text to the seven unlabeled photos.</b> Cake photos should be findable in image search.</span></li></ul>
+</section>
+
+<section class="offer reveal">
+  <div>
+    <h3>Want this <mark>fixed</mark> for you?</h3>
+    <p class="bd" style="margin-top:1rem">Moio's does not need saving. It needs the front door labeled correctly. If you want these fixed, or a site that shows the cases the way they actually look, that is where we come in.</p>
+    <a class="cta" href="mailto:cam@ap.haus" style="display:inline-block;margin-top:1.3rem;border:1px solid var(--ink);padding:.75rem 1.4rem;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--bg)">Reply to the email</a>
+  </div>
+  <div>
+    <p class="mono" style="margin-bottom:.6rem">What it costs</p>
+    <div class="rate"><span class="n">Full site rebuild</span><span class="p">$1,500 flat</span></div>
+    <div class="rate"><span class="n">Timeline</span><span class="p">About 2 weeks</span></div>
+    <div class="rate"><span class="n">Care plan after launch</span><span class="p">$150 / mo</span></div>
+    <div class="rate"><span class="n">This report</span><span class="p">Free</span></div>
+    <p class="bd" style="margin-top:1.1rem;font-size:.92rem">Everything in this report is fixed as part of the rebuild. If you would rather hand it to whoever built the site, take it and go. No strings.</p>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <span class="mono">ap.haus / Pittsburgh</span>
+  <span class="mono">Report generated July 30, 2026</span>
+</footer>
+
+<script>
+(function(){
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body></html>
