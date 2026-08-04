@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Brew Gentlemen / Search Visibility Report / ap.haus</title>
+<meta name="description" content="A plain-language search and site audit of threestrandssalon.com, prepared by ap.haus.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f2e9; --paper:#efe8db; --ink:#241f1a; --muted:#5c534a; --faint:#8c8175;
+  --hair:#d5cbb9; --accent:#8A5F3C;
+  --gut:clamp(1.2rem,3.4vw,3rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+.grain{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.16;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+/* top bar */
+.top{border-bottom:1px solid var(--ink);position:sticky;top:0;background:var(--bg);z-index:50}
+.topin{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem 0;flex-wrap:wrap}
+.brand{font-family:"Archivo";font-weight:700;letter-spacing:-.02em;font-size:.95rem;text-transform:lowercase}
+.brand em{font-style:normal;color:var(--accent)}
+/* hero */
+.hero{padding:clamp(2.6rem,8vh,5.5rem) 0 0}
+.eyebrow{display:flex;align-items:center;gap:.6rem}
+.eyebrow .dot{width:7px;height:7px;background:var(--accent);border-radius:50%}
+h1.bill{font-family:"Archivo";font-weight:600;text-transform:uppercase;line-height:.86;letter-spacing:-.025em;
+  font-size:clamp(1.85rem,4.8vw,3.5rem);margin:.7rem 0 .6rem;max-width:26ch}
+.sub{font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:56ch;color:var(--muted);line-height:1.45}
+.metacols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--hair);
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:clamp(1.8rem,5vh,3rem) 0 0}
+.mc{background:var(--bg);padding:.9rem 0 1rem;padding-right:1rem}
+.mc .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.mc .v{font-family:"Archivo";font-weight:500;font-size:.92rem;margin-top:.25rem;letter-spacing:-.01em}
+/* score */
+.score{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(1.5rem,5vw,4rem);
+  align-items:start;padding:clamp(2.2rem,6vh,4rem) 0;border-bottom:1px solid var(--ink)}
+.bignum{font-family:"Archivo";font-weight:600;font-size:clamp(5rem,17vw,11rem);line-height:.8;letter-spacing:-.04em}
+.bignum small{font-size:.22em;color:var(--faint);letter-spacing:0}
+.barrow{display:grid;grid-template-columns:minmax(120px,1.1fr) minmax(0,2.4fr) 34px;gap:.9rem;align-items:center;padding:.55rem 0;border-bottom:1px solid var(--hair)}
+.barrow:last-child{border-bottom:0}
+.bl{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.btrack{height:6px;background:var(--paper);border:1px solid var(--hair);position:relative;display:block}
+.bfill{position:absolute;left:0;top:0;bottom:0;background:var(--accent)}
+.bv{font-family:"Archivo";font-weight:600;font-size:.85rem;text-align:right}
+/* sections */
+.sec{padding:clamp(2.4rem,7vh,4.4rem) 0 0}
+.spec{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.spec .ct{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;color:var(--accent)}
+.spec h2{font-family:"Archivo";font-weight:600;text-transform:uppercase;letter-spacing:-.015em;
+  font-size:clamp(1.25rem,3.4vw,2.1rem);line-height:1;flex:1}
+.spec .rt{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.rule{height:1px;background:var(--ink);margin:.85rem 0 1.6rem}
+.find{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.2rem,4vw,3rem)}
+.lab{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}
+.bd{font-size:1rem;line-height:1.6;color:var(--muted);max-width:52ch}
+.bd strong{color:var(--ink);font-weight:600}
+.ev{border:1px solid var(--ink);background:var(--paper);padding:1rem 1.1rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.76rem;line-height:1.65;word-break:break-word}
+.ev .tag{display:block;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}
+.ev b{color:var(--accent);font-weight:500}
+.ev .strike{text-decoration:line-through;color:var(--faint)}
+/* serp mock */
+.serp{border:1px solid var(--ink);background:#fff;padding:1.2rem 1.3rem;margin-top:.8rem;font-family:Arial,Helvetica,sans-serif}
+.serp .u{font-size:.78rem;color:#4d5156}
+.serp .t{font-size:1.15rem;color:#1a0dab;line-height:1.3;margin:.15rem 0 .25rem}
+.serp .d{font-size:.85rem;color:#4d5156;line-height:1.45}
+.serp .d .cut{color:#b9b2a7}
+.serpwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:.4rem}
+/* priority */
+.prio{list-style:none;margin-top:.4rem}
+.prio li{display:flex;gap:.8rem;padding:.95rem 0;border-bottom:1px solid var(--hair);font-size:1.02rem;line-height:1.5}
+.prio li:before{content:"/";color:var(--accent);font-family:"IBM Plex Mono",monospace;font-weight:500;flex:none}
+.prio li b{font-weight:600}
+/* offer */
+.offer{margin:clamp(3rem,9vh,6rem) 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:clamp(2.2rem,6vh,4rem) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.4rem,4vw,3rem)}
+.offer h3{font-family:"Archivo";font-weight:600;text-transform:uppercase;font-size:clamp(1.6rem,4.6vw,2.8rem);
+  line-height:.95;letter-spacing:-.02em;max-width:12ch}
+.offer h3 mark{background:none;color:var(--accent)}
+.rate{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--hair)}
+.rate .n{font-family:"Archivo";font-weight:500;text-transform:uppercase;letter-spacing:-.01em;font-size:1rem}
+.rate .p{font-family:"Archivo";font-weight:600;font-size:1.05rem}
+.cta{display:inline-block;margin-top:1.3rem;border:1px solid var(--ink);padding:.75rem 1.4rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink);background:var(--bg);transition:.35s var(--ease)}
+.cta:hover{background:var(--ink);color:var(--bg)}
+footer{padding:2rem 0 3.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:760px){ .find{grid-template-columns:1fr} .score{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} }
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+
+<body><div class="grain"></div>
+<div class="top"><div class="wrap topin"><span class="brand">ap<em>.</em>haus</span><span class="mono">Search visibility report / 08.04.26</span></div></div>
+<header class="hero"><div class="wrap">
+<div class="eyebrow"><span class="dot"></span><span class="mono">Prepared for Brew Gentlemen</span></div>
+<h1 class="bill">Your search description is <mark>23 characters</mark> long.</h1>
+<p class="sub">Google gives you about a hundred and sixty. You are using twenty three of them. Everything that makes Brew Gentlemen worth driving to Braddock for is not in the part of the site that search results actually print.</p>
+<div class="metacols"><div class="mc"><div class="k">Site reviewed</div><div class="v">brewgentlemen.com</div></div><div class="mc"><div class="k">Date</div><div class="v">08.04.26</div></div><div class="mc"><div class="k">Built on</div><div class="v">Shopify</div></div><div class="mc"><div class="k">Reviewed by</div><div class="v">Cam / ap.haus</div></div></div>
+</div></header>
+<div class="wrap"><div class="score">
+<div><p class="mono" style="margin-bottom:.9rem">Overall search readiness</p><div class="bignum">61<small>/100</small></div>
+<p class="bd" style="margin-top:1.1rem;max-width:34ch">Nothing broken. Several free slots on the page that are simply sitting empty.</p></div>
+<div><p class="mono" style="margin-bottom:.6rem">Category breakdown</p>
+<div class="barrow"><span class="bl">Search snippet</span><span class="btrack"><span class="bfill" style="width:35%"></span></span><span class="bv">35</span></div><div class="barrow"><span class="bl">Link previews</span><span class="btrack"><span class="bfill" style="width:75%"></span></span><span class="bv">75</span></div><div class="barrow"><span class="bl">Page structure</span><span class="btrack"><span class="bfill" style="width:55%"></span></span><span class="bv">55</span></div><div class="barrow"><span class="bl">Image alt text</span><span class="btrack"><span class="bfill" style="width:50%"></span></span><span class="bv">50</span></div><div class="barrow"><span class="bl">Local signals</span><span class="btrack"><span class="bfill" style="width:65%"></span></span><span class="bv">65</span></div><div class="barrow"><span class="bl">Technical setup</span><span class="btrack"><span class="bfill" style="width:60%"></span></span><span class="bv">60</span></div>
+</div></div></div>
+<main class="wrap">
+<section class="sec reveal"><div class="spec"><span class="ct">01/04</span><h2>The search snippet is almost empty</h2><span class="rt">Meta description</span></div><div class="rule"></div>
+<div class="find"><div class="fl"><p class="lab">What we found</p><div class="ev"><span class="tag">Homepage of brewgentlemen.com, 08.04.26</span>Page title: <b>"Brew Gentlemen"</b>, 14 characters<br>Meta description: <b>23 characters</b><br>Braddock named in either: <b>no</b><br>Beer styles named: <b>no</b></div></div>
+<div class="fr"><p class="lab">Why it matters</p><p class="bd">Somebody searching for a Braddock brewery or a specific style gets a result that says your name twice and nothing else. The competing result underneath it describes its taproom, its hours and its beer. That is the whole contest, decided before anyone clicks.</p><p class="lab" style="margin-top:1.4rem">The fix</p><p class="bd">A title and description naming Braddock and what you brew, inside the lengths Google prints.</p></div></div></section><section class="sec reveal"><div class="spec"><span class="ct">02/04</span><h2>No structured data on the site</h2><span class="rt">Local signals</span></div><div class="rule"></div>
+<div class="find"><div class="fl"><p class="lab">What we found</p><div class="ev"><span class="tag">Schema check</span>LocalBusiness or Brewery markup: <b>none found</b><br>Opening hours markup: <b>none</b><br>Address markup: <b>none</b></div></div>
+<div class="fr"><p class="lab">Why it matters</p><p class="bd">Structured data is how you tell Google in plain machine terms that you are a brewery, in Braddock, open at these hours. Without it Google guesses from the page text, and your page text is thin. This is the difference between appearing in the local map pack and not.</p><p class="lab" style="margin-top:1.4rem">The fix</p><p class="bd">Add Brewery and LocalBusiness markup with hours and address. Invisible to visitors, meaningful to search.</p></div></div></section><section class="sec reveal"><div class="spec"><span class="ct">03/04</span><h2>Half the homepage images have no alt text</h2><span class="rt">Image search</span></div><div class="rule"></div>
+<div class="find"><div class="fl"><p class="lab">What we found</p><div class="ev"><span class="tag">Homepage images</span>Images on homepage: <b>10</b><br>Missing alt text: <b>5</b></div></div>
+<div class="fr"><p class="lab">Why it matters</p><p class="bd">Not urgent, but it is free. Beer label art and taproom photos are things people search for visually, and undescribed images do not appear in those results.</p><p class="lab" style="margin-top:1.4rem">The fix</p><p class="bd">Describe the five images. Fifteen minutes.</p></div></div></section>
+<section class="sec reveal"><div class="spec"><span class="ct">04/04</span><h2>What we would fix first</h2><span class="rt">Priority order</span></div><div class="rule"></div>
+<ul class="prio"><li><span><b>Write a real meta description.</b> The single highest return item here and it takes five minutes.</span></li><li><span><b>Lengthen the page title.</b> Name Braddock and the beer.</span></li><li><span><b>Add brewery structured data.</b> This is what gets you into the local pack.</span></li><li><span><b>Alt text on the remaining images.</b></span></li></ul></section>
+<section class="offer reveal">
+<div><h3>Want this <mark>fixed</mark> for you?</h3>
+<p class="bd" style="margin-top:1rem">The site itself looks good, so this is not a redesign pitch. Take the list and hand it to whoever maintains the site. If you would rather we did it, a full rebuild is $1,500 flat.</p>
+<a class="cta" href="mailto:cam@ap.haus?subject=Brew%20Gentlemen%20%2F%20site">Reply to the email</a></div>
+<div><p class="mono" style="margin-bottom:.6rem">What it costs</p>
+<div class="rate"><span class="n">Full site rebuild</span><span class="p">$1,500 flat</span></div>
+<div class="rate"><span class="n">Timeline</span><span class="p">About 2 weeks</span></div>
+<div class="rate"><span class="n">Care plan after launch</span><span class="p">$150 / mo</span></div>
+<div class="rate"><span class="n">This report</span><span class="p">Free</span></div>
+<p class="bd" style="margin-top:1.1rem;font-size:.92rem">Everything in this report is fixed as part of the rebuild. If you would rather hand it to whoever built the site, take it and go. No strings.</p></div></section>
+</main>
+<footer class="wrap"><span class="mono">ap.haus / Pittsburgh</span><span class="mono">Report generated August 4, 2026</span></footer>
+<script>(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();</script>
+</body></html>
