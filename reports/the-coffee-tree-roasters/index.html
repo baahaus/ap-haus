@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The Coffee Tree Roasters / Search Visibility Report / ap.haus</title>
+<meta name="description" content="A plain-language search and site audit of yarnbitsandbobs.com, prepared by ap.haus.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f2e9; --paper:#efe8db; --ink:#241f1a; --muted:#5c534a; --faint:#8c8175;
+  --hair:#d5cbb9; --accent:#3F639B;
+  --gut:clamp(1.2rem,3.4vw,3rem);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+.grain{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.16;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.top{border-bottom:1px solid var(--ink);position:sticky;top:0;background:var(--bg);z-index:50}
+.topin{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem 0;flex-wrap:wrap}
+.brand{font-family:"Archivo";font-weight:700;letter-spacing:-.02em;font-size:.95rem;text-transform:lowercase}
+.brand em{font-style:normal;color:var(--accent)}
+.hero{padding:clamp(2.6rem,8vh,5.5rem) 0 0}
+.eyebrow{display:flex;align-items:center;gap:.6rem}
+.eyebrow .dot{width:7px;height:7px;background:var(--accent);border-radius:50%}
+h1.bill{font-family:"Archivo";font-weight:600;text-transform:uppercase;line-height:.86;letter-spacing:-.025em;
+  font-size:clamp(2.1rem,6vw,4.4rem);margin:.7rem 0 .6rem;max-width:20ch}
+.sub{font-size:clamp(1.05rem,2.2vw,1.35rem);max-width:56ch;color:var(--muted);line-height:1.45}
+.metacols{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--hair);
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:clamp(1.8rem,5vh,3rem) 0 0}
+.mc{background:var(--bg);padding:.9rem 0 1rem;padding-right:1rem}
+.mc .k{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.mc .v{font-family:"Archivo";font-weight:500;font-size:.92rem;margin-top:.25rem;letter-spacing:-.01em}
+.score{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(1.5rem,5vw,4rem);
+  align-items:start;padding:clamp(2.2rem,6vh,4rem) 0;border-bottom:1px solid var(--ink)}
+.bignum{font-family:"Archivo";font-weight:600;font-size:clamp(5rem,17vw,11rem);line-height:.8;letter-spacing:-.04em}
+.bignum small{font-size:.22em;color:var(--faint);letter-spacing:0}
+.barrow{display:grid;grid-template-columns:minmax(120px,1.1fr) minmax(0,2.4fr) 34px;gap:.9rem;align-items:center;padding:.55rem 0;border-bottom:1px solid var(--hair)}
+.barrow:last-child{border-bottom:0}
+.bl{font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase}
+.btrack{height:6px;background:var(--paper);border:1px solid var(--hair);position:relative;display:block}
+.bfill{position:absolute;left:0;top:0;bottom:0;background:var(--accent)}
+.bv{font-family:"Archivo";font-weight:600;font-size:.85rem;text-align:right}
+.sec{padding:clamp(2.4rem,7vh,4.4rem) 0 0}
+.spec{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.spec .ct{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;color:var(--accent)}
+.spec h2{font-family:"Archivo";font-weight:600;text-transform:uppercase;letter-spacing:-.015em;
+  font-size:clamp(1.25rem,3.4vw,2.1rem);line-height:1;flex:1}
+.spec .rt{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.rule{height:1px;background:var(--ink);margin:.85rem 0 1.6rem}
+.find{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.2rem,4vw,3rem)}
+.lab{font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}
+.bd{font-size:1rem;line-height:1.6;color:var(--muted);max-width:52ch}
+.bd strong{color:var(--ink);font-weight:600}
+.ev{border:1px solid var(--ink);background:var(--paper);padding:1rem 1.1rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.76rem;line-height:1.65;word-break:break-word}
+.ev .tag{display:block;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:.5rem}
+.ev b{color:var(--accent);font-weight:500}
+.ev .strike{text-decoration:line-through;color:var(--faint)}
+.serp{border:1px solid var(--ink);background:#fff;padding:1.2rem 1.3rem;margin-top:.8rem;font-family:Arial,Helvetica,sans-serif}
+.serp .u{font-size:.78rem;color:#4d5156}
+.serp .t{font-size:1.15rem;color:#1a0dab;line-height:1.3;margin:.15rem 0 .25rem}
+.serp .d{font-size:.85rem;color:#4d5156;line-height:1.45}
+.serp .d .cut{color:#b9b2a7}
+.serpwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:.4rem}
+.prio{list-style:none;margin-top:.4rem}
+.prio li{display:flex;gap:.8rem;padding:.95rem 0;border-bottom:1px solid var(--hair);font-size:1.02rem;line-height:1.5}
+.prio li:before{content:"/";color:var(--accent);font-family:"IBM Plex Mono",monospace;font-weight:500;flex:none}
+.prio li b{font-weight:600}
+.offer{margin:clamp(3rem,9vh,6rem) 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:clamp(2.2rem,6vh,4rem) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.4rem,4vw,3rem)}
+.offer h3{font-family:"Archivo";font-weight:600;text-transform:uppercase;font-size:clamp(1.6rem,4.6vw,2.8rem);
+  line-height:.95;letter-spacing:-.02em;max-width:12ch}
+.offer h3 mark{background:none;color:var(--accent)}
+.rate{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--hair)}
+.rate .n{font-family:"Archivo";font-weight:500;text-transform:uppercase;letter-spacing:-.01em;font-size:1rem}
+.rate .p{font-family:"Archivo";font-weight:600;font-size:1.05rem}
+footer{padding:2rem 0 3.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:760px){ .find{grid-template-columns:1fr} .score{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none} }
+h1.bill mark{background:none;color:var(--accent)}</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<div class="grain"></div>
+<div class="top"><div class="wrap topin"><span class="brand">ap<em>.</em>haus</span><span class="mono">Search visibility report / 08.05.26</span></div></div>
+<header class="hero"><div class="wrap">
+  <div class="eyebrow"><span class="dot"></span><span class="mono">Prepared for The Coffee Tree Roasters</span></div>
+  <h1 class="bill">Your homepage has <mark>no description and no headline</mark></h1>
+  <p class="sub">coffeetree.store has no meta description and no H1 at all. Google is left to invent both the headline and the text under it, for a roaster that has been part of Pittsburgh coffee for decades.</p>
+  <div class="metacols">
+    <div class="mc"><div class="k">Site reviewed</div><div class="v">coffeetree.store</div></div>
+    <div class="mc"><div class="k">Date</div><div class="v">08.05.26</div></div>
+    <div class="mc"><div class="k">Built on</div><div class="v">Squarespace</div></div>
+    <div class="mc"><div class="k">Reviewed by</div><div class="v">Cam / ap.haus</div></div>
+  </div>
+</div></header>
+<main class="wrap">
+<div class="score">
+  <div><p class="mono" style="margin-bottom:.9rem">Overall search readiness</p>
+  <div class="bignum">54<small>/100</small></div>
+  <p class="bd" style="margin-top:1.1rem;max-width:34ch">Everything in this report is visible from the public page. No access to anything of yours was needed to write it.</p></div>
+  <div><p class="mono" style="margin-bottom:.6rem">Category breakdown</p>
+  <div class="barrow"><span class="bl">Search snippet</span><span class="btrack"><span class="bfill" style="width:20%"></span></span><span class="bv">20</span></div><div class="barrow"><span class="bl">Link previews</span><span class="btrack"><span class="bfill" style="width:30%"></span></span><span class="bv">30</span></div><div class="barrow"><span class="bl">Page structure</span><span class="btrack"><span class="bfill" style="width:20%"></span></span><span class="bv">20</span></div><div class="barrow"><span class="bl">Image alt text</span><span class="btrack"><span class="bfill" style="width:100%"></span></span><span class="bv">100</span></div><div class="barrow"><span class="bl">Local signals</span><span class="btrack"><span class="bfill" style="width:80%"></span></span><span class="bv">80</span></div><div class="barrow"><span class="bl">Technical setup</span><span class="btrack"><span class="bfill" style="width:75%"></span></span><span class="bv">75</span></div>
+  </div>
+</div>
+<section class="sec reveal"><div class="spec"><span class="ct">01/04</span><h2>No meta description</h2><span class="rt">Search snippet</span></div><div class="rule"></div>
+<div class="find"><div class="fl"><p class="lab">What we found</p><div class="ev"><span class="tag">Checked 08.05.26</span>Meta description: <b>none</b><br>Title: <b>Coffee Tree Roasters</b><br>Neighbourhood named in the title: <b>no</b></div></div>
+<div class="fr"><p class="lab">Why it matters</p><p class="bd">The description is the two lines of sales copy under your name in every search result. Without one, Google scrapes text off the page, and the roaster gets described by accident rather than on purpose.</p><p class="lab" style="margin-top:1.4rem">The fix</p><p class="bd">Write one line naming the roastery, the cafes and what makes the coffee yours.</p></div></div></section><section class="sec reveal"><div class="spec"><span class="ct">02/04</span><h2>No H1 on the page</h2><span class="rt">Page structure</span></div><div class="rule"></div>
+<div class="find"><div class="fl"><p class="lab">What we found</p><div class="ev"><span class="tag">Checked 08.05.26</span>H1 headings: <b>0</b><br>Images on the homepage: <b>3</b><br>Structured data: <b>WebSite, Organization, LocalBusiness</b></div></div>
+<div class="fr"><p class="lab">Why it matters</p><p class="bd">Your structured data is actually good, which makes the missing headline more frustrating. The single most important heading on the page does not exist, so the strongest on page signal you own is empty.</p><p class="lab" style="margin-top:1.4rem">The fix</p><p class="bd">One H1 naming the roaster and the city, with the rest of the page hung underneath it.</p></div></div></section><section class="sec reveal"><div class="spec"><span class="ct">03/04</span><h2>Your share image is a logo lockup served over http</h2><span class="rt">Link previews</span></div><div class="rule"></div>
+<div class="find"><div class="fl"><p class="lab">What we found</p><div class="ev"><span class="tag">Checked 08.05.26</span>og:image: <b>Lockup 2.png</b><br>Served over: <b>http, not https</b><br>twitter:card: <b>summary</b> (small square)</div></div>
+<div class="fr"><p class="lab">Why it matters</p><p class="bd">Two problems in one tag. The image is a logo rather than coffee, and it is referenced over plain http, which some platforms refuse to load at all. That combination is why shared links look empty.</p><p class="lab" style="margin-top:1.4rem">The fix</p><p class="bd">A wide https photo of the roastery or a pour, plus summary_large_image.</p></div></div></section><section class="sec reveal"><div class="spec"><span class="ct">04/04</span><h2>The domain and the email do not match</h2><span class="rt">Brand signals</span></div><div class="rule"></div>
+<div class="find"><div class="fl"><p class="lab">What we found</p><div class="ev"><span class="tag">Checked 08.05.26</span>Live site: <b>coffeetree.store</b><br>Published email: <b>custserv@coffeetree.com</b><br>Pages in sitemap: <b>60</b></div></div>
+<div class="fr"><p class="lab">Why it matters</p><p class="bd">Customers see one name in the address bar and a different one in your email. Search engines treat domain consistency as a trust signal, and people simply get confused about which one is real.</p><p class="lab" style="margin-top:1.4rem">The fix</p><p class="bd">Decide which domain is the front door and point the other at it permanently.</p></div></div></section>
+<section class="sec reveal"><div class="spec"><span class="ct">Next</span><h2>What we would fix first</h2><span class="rt">Priority order</span></div><div class="rule"></div>
+<ul class="prio"><li><span><b>Write a meta description.</b> The cheapest win on this list.</span></li><li><span><b>Add one H1.</b> Name the roaster and Pittsburgh.</span></li><li><span><b>Fix the share image.</b> Wide, https, and coffee rather than a logo.</span></li><li><span><b>Consolidate the domains.</b> One name in the address bar and in the email.</span></li></ul></section>
+<section class="offer reveal">
+  <div><h3>Want this <mark>fixed</mark> for you?</h3>
+  <p class="bd" style="margin-top:1rem">This report is free and yours either way. If you would rather these were fixed properly, or want a homepage that feels like The Coffee Tree Roasters instead of a template, that is where we come in.</p>
+  <a class="cta" href="mailto:cam@ap.haus" style="display:inline-block;margin-top:1.3rem;border:1px solid var(--ink);padding:.75rem 1.4rem;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:var(--bg)">Reply to the email</a></div>
+  <div><p class="mono" style="margin-bottom:.6rem">What it costs</p>
+  <div class="rate"><span class="n">Full site rebuild</span><span class="p">$1,500 flat</span></div>
+  <div class="rate"><span class="n">Timeline</span><span class="p">About 2 weeks</span></div>
+  <div class="rate"><span class="n">Care plan after launch</span><span class="p">$150 / mo</span></div>
+  <div class="rate"><span class="n">This report</span><span class="p">Free</span></div>
+  <p class="bd" style="margin-top:1.1rem;font-size:.92rem">Everything in this report is fixed as part of the rebuild. If you would rather hand it to whoever built the site, take it and go. No strings.</p></div>
+</section>
+</main>
+<footer class="wrap"><span class="mono">ap.haus / Pittsburgh</span><span class="mono">Report generated August 5, 2026</span></footer>
+<script>(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();</script>
+</body></html>
